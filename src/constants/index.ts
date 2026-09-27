@@ -6,10 +6,10 @@
 
 export const CTA_TEXTS = {
   // Primary CTA buttons
-  START_FREE_PILOT: 'Start Free 30-Day Pilot',
+  START_FREE_PILOT: 'Start Free 7-Day Pilot',
   START_FREE_PILOT_SHORT: 'Get Pilot',
-  START_FREE_PILOT_HERO: 'Start Free 30-Day School Pilot',
-  START_FREE_PILOT_SUBMIT: 'Activate 30-Day Free School Pilot',
+  START_FREE_PILOT_HERO: 'Start Free 7-Day School Pilot',
+  START_FREE_PILOT_SUBMIT: 'Activate 7-Day Free School Pilot',
   
   // Secondary action buttons
   TRY_DEMO: 'Try Interactive App Demo',
@@ -25,7 +25,7 @@ export const CTA_TEXTS = {
 
 export const BRAND_CONFIG = {
   name: 'MSchool',
-  badge: 'Workspace',
+  badge: 'Pakistan',
   tagline: 'Integrated School OS & Learning Suite',
   supportPhone: '0335-8009786',
   supportEmail: 'inquiries@mschoolecosystem.com',
@@ -33,7 +33,7 @@ export const BRAND_CONFIG = {
   partnerCount: '20+',
   studentCount: '25,000+',
   feeAccuracy: '99.98%',
-  pilotDuration: '30-Day',
+  pilotDuration: '7-Day',
 } as const;
 
 export const HERO_CONTENT = {
@@ -53,11 +53,11 @@ export const HERO_CONTENT = {
 export const FREE_PILOT_FORM_CONFIG = {
   // Section text
   sectionEyebrow: 'Free Institutional Onboarding',
-  sectionTitle: 'Start your 30-day free pilot',
+  sectionTitle: 'Start your 7-day free pilot',
   sectionDescription: 'Experience the full ecosystem at your campus. Our team assists with data import, staff training, and thermal printer setup.',
   
   // Modal text
-  modalEyebrow: '30-Day Free Evaluation',
+  modalEyebrow: '7-Day Free Evaluation',
   modalTitle: 'Request Your Free School Pilot',
   modalDescription: 'Experience the MSchool ecosystem with zero setup fee or long-term commitment.',
   

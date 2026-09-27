@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </div>
             <p className="text-[11px] text-[#5f6368] font-normal hidden sm:block">
-              {BRAND_CONFIG.tagline}
+              {/* {BRAND_CONFIG.tagline} */}
             </p>
           </div>
         </a>
