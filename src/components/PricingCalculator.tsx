@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle2, ChevronRight } from 'lucide-react';
+import { CTA_TEXTS, PRICING_CONFIG } from '../constants';
 
 interface PricingCalculatorProps {
   onOpenBooking: () => void;
@@ -20,13 +21,13 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs uppercase font-bold tracking-wider text-[#1a73e8] mb-2 block">
-            Transparent Investment
+            {PRICING_CONFIG.eyebrow}
           </span>
           <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#202124] mb-3">
-            Predictable pricing in Pakistani Rupees
+            {PRICING_CONFIG.title}
           </h2>
           <p className="text-sm sm:text-base text-[#5f6368]">
-            No hidden transaction fees or surprise add-ons. Every plan includes free initial student data onboarding and staff training.
+            {PRICING_CONFIG.subtitle}
           </p>
 
           {/* Billing Cycle Toggle (Google Workspace Style) */}
@@ -146,7 +147,7 @@ export const PricingCalculator: React.FC<PricingCalculatorProps> = ({ onOpenBook
                 onClick={onOpenBooking}
                 className="w-full py-3.5 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-98"
               >
-                <span>Request 30-Day Free Pilot</span>
+                <span>{CTA_TEXTS.START_FREE_PILOT}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>

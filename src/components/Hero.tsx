@@ -15,6 +15,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { CTA_TEXTS, BRAND_CONFIG, HERO_CONTENT } from '../constants';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -97,7 +98,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f8f9fa] border border-[#dadce0] text-[#3c4043] text-xs sm:text-sm font-medium hover:border-[#1a73e8] transition-colors">
             <span className="w-2 h-2 rounded-full bg-[#1e8e3e]" />
-            <span>Powering 20+ institutions with 25,000+ enrolled students</span>
+            <span>{BRAND_CONFIG.trustBadge}</span>
           </div>
         </motion.div>
 
@@ -110,10 +111,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
         >
           <div className="inline-block bg-[#f8fafd] border border-[#d2e3fc] rounded-2xl px-6 py-4 sm:px-8 sm:py-5 shadow-xs">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#1a73e8] block mb-1">
-              The Modern Educational Paradigm
+              {HERO_CONTENT.eyebrow}
             </span>
             <p className="text-lg sm:text-2xl md:text-3xl font-extrabold text-[#202124] tracking-tight leading-snug">
-              “Stop managing your school like it&apos;s 1990. Switch to MSchool and turn your administrative burden into a competitive advantage.”
+              {HERO_CONTENT.hookQuote}
             </p>
           </div>
         </motion.div>
@@ -121,15 +122,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
         {/* Main Title & Subtitle */}
         <div className="text-center max-w-4xl mx-auto mb-8">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#202124] mb-5 leading-tight">
-            An integrated school ecosystem{' '}
+            {HERO_CONTENT.headlineLead}{' '}
             <span className="text-[#1a73e8]">
-              designed for the modern classroom.
+              {HERO_CONTENT.headlineAccent}
             </span>
           </h1>
 
           <p className="text-base sm:text-lg text-[#5f6368] max-w-2xl mx-auto leading-relaxed">
-            All your school operations together in one cohesive workspace. From student enrollment 
-            and atomic fee collection to early-learning gamified books and live parent communication.
+            {HERO_CONTENT.subtitle}
           </p>
         </div>
 
@@ -139,7 +139,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
             onClick={onOpenBooking}
             className="w-full sm:w-auto px-7 py-3.5 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer active:scale-98"
           >
-            <span>Start Free 30-Day School Pilot</span>
+            <span>{CTA_TEXTS.START_FREE_PILOT_HERO}</span>
             <ChevronRight className="w-4 h-4" />
           </button>
 
@@ -148,7 +148,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
             className="w-full sm:w-auto px-6 py-3.5 rounded-full text-sm font-semibold text-[#1a73e8] bg-white hover:bg-[#f8fafd] border border-[#dadce0] transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
             <Smartphone className="w-4 h-4 text-[#1a73e8]" />
-            <span>Try Interactive App Demo</span>
+            <span>{CTA_TEXTS.TRY_DEMO}</span>
           </button>
 
           <button
@@ -156,7 +156,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
             className="w-full sm:w-auto px-6 py-3.5 rounded-full text-sm font-medium text-[#3c4043] bg-[#f8f9fa] hover:bg-[#f1f3f4] border border-[#dadce0] transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
             <Gamepad2 className="w-4 h-4 text-[#f29900]" />
-            <span>Play mKids Games</span>
+            <span>{CTA_TEXTS.PLAY_MKIDS}</span>
           </button>
         </div>
 
@@ -236,9 +236,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
               </button>
               <button
                 onClick={onOpenBooking}
-                className="px-5 py-2.5 rounded-full text-xs font-medium text-[#3c4043] bg-[#f8f9fa] hover:bg-[#f1f3f4] border border-[#dadce0] transition-colors text-center"
+                className="px-5 py-2.5 rounded-full text-xs font-medium text-[#3c4043] bg-[#f8f9fa] hover:bg-[#f1f3f4] border border-[#dadce0] transition-colors text-center cursor-pointer"
               >
-                Request Deployment
+                {CTA_TEXTS.REQUEST_DEPLOYMENT}
               </button>
             </div>
           </motion.div>

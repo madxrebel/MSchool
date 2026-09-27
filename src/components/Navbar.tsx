@@ -4,10 +4,9 @@ import {
   Smartphone, 
   Menu, 
   X, 
-  ArrowRight,
-  Sparkles,
   ChevronRight
 } from 'lucide-react';
+import { CTA_TEXTS, BRAND_CONFIG, NAV_ITEMS } from '../constants';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -31,14 +30,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { id: 'ecosystem', label: 'Ecosystem Suite' },
-    { id: 'simulator', label: 'Live App Demo' },
-    { id: 'portals', label: '12 School Portals' },
-    { id: 'features', label: 'Platform Advantage' },
-    { id: 'pricing', label: 'Transparent Pricing' },
-  ];
-
   return (
     <header 
       className={`sticky top-0 z-50 transition-all duration-200 ${
@@ -57,21 +48,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xl font-bold tracking-tight text-[#202124]">
-                MSchool
+                {BRAND_CONFIG.name}
               </span>
               <span className="text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc]">
-                Workspace
+                {BRAND_CONFIG.badge}
               </span>
             </div>
             <p className="text-[11px] text-[#5f6368] font-normal hidden sm:block">
-              Integrated School OS & Learning Suite
+              {BRAND_CONFIG.tagline}
             </p>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -93,14 +84,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="px-4 py-2 rounded-full text-sm font-medium text-[#1a73e8] hover:bg-[#f8fafd] border border-[#dadce0] transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             <Smartphone className="w-4 h-4 text-[#1a73e8]" />
-            <span>Interactive Demo</span>
+            <span>{CTA_TEXTS.LAUNCH_DEMO_SHORT}</span>
           </button>
           
           <button
             onClick={onOpenBooking}
             className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-98"
           >
-            <span>Start Free 30-Day Pilot</span>
+            <span>{CTA_TEXTS.START_FREE_PILOT}</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
@@ -111,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={onOpenBooking}
             className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1a73e8] text-white sm:hidden"
           >
-            Get Pilot
+            {CTA_TEXTS.START_FREE_PILOT_SHORT}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -127,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-[#dadce0] px-4 pt-3 pb-6 space-y-2 shadow-lg">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -145,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="w-full py-2.5 rounded-full border border-[#dadce0] text-[#1a73e8] font-medium text-sm text-center"
             >
-              Launch Live App Demo
+              {CTA_TEXTS.TRY_DEMO}
             </button>
             <button
               onClick={() => {
@@ -154,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="w-full py-2.5 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold text-sm text-center shadow-xs"
             >
-              Start Free 30-Day School Pilot
+              {CTA_TEXTS.START_FREE_PILOT}
             </button>
           </div>
         </div>

@@ -5,11 +5,12 @@ import { InteractiveDeviceSimulator } from './components/InteractiveDeviceSimula
 import { EcosystemOverview } from './components/EcosystemOverview';
 import { PortalsMatrix } from './components/PortalsMatrix';
 import { TechnicalEdge } from './components/TechnicalEdge';
-import { KarachiExpoBanner } from './components/KarachiExpoBanner';
+import { FreePilotSection } from './components/FreePilotSection';
 import { PartnersAndStory } from './components/PartnersAndStory';
 import { PricingCalculator } from './components/PricingCalculator';
 import { BookingModal } from './components/BookingModal';
 import { Footer } from './components/Footer';
+import { CTA_TEXTS } from './constants';
 import { 
   Sparkles, 
   Smartphone, 
@@ -101,7 +102,7 @@ export default function App() {
         <TechnicalEdge />
 
         {/* 30-Day Free School Pilot Request Form (Firebase Firestore) */}
-        <KarachiExpoBanner 
+        <FreePilotSection 
           onOpenBooking={() => setBookingModalOpen(true)}
         />
 
@@ -167,7 +168,7 @@ export default function App() {
           onClick={() => setBookingModalOpen(true)}
           className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white shadow-xs transition-colors cursor-pointer"
         >
-          Get Pilot
+          {CTA_TEXTS.START_FREE_PILOT_SHORT}
         </button>
       </div>
 

@@ -7,6 +7,7 @@ import {
   Heart, 
   ChevronRight 
 } from 'lucide-react';
+import { CTA_TEXTS, BRAND_CONFIG } from '../constants';
 
 interface FooterProps {
   onOpenBooking: () => void;
@@ -22,20 +23,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
         <div className="bg-[#f8fafd] border border-[#d2e3fc] rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center md:text-left">
             <span className="text-xs font-bold uppercase tracking-wider text-[#1a73e8]">
-              Get Started with MSchool
+              Get Started with {BRAND_CONFIG.name}
             </span>
             <h3 className="text-xl sm:text-2xl font-bold text-[#202124]">
               Ready to transform your school's daily administration?
             </h3>
             <p className="text-sm text-[#5f6368]">
-              Join 20+ partner institutions and experience zero-lag school operations.
+              Join {BRAND_CONFIG.partnerCount} partner institutions and experience zero-lag school operations.
             </p>
           </div>
           <button
             onClick={onOpenBooking}
             className="px-6 py-3.5 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold text-sm shadow-xs whitespace-nowrap cursor-pointer transition-all active:scale-98 flex items-center gap-1.5"
           >
-            <span>Start Free 30-Day Pilot</span>
+            <span>{CTA_TEXTS.START_FREE_PILOT}</span>
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
@@ -52,25 +53,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
                 <GraduationCap className="w-5 h-5" />
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-base font-bold text-[#202124] tracking-tight">MSchool</span>
+                <span className="text-base font-bold text-[#202124] tracking-tight">{BRAND_CONFIG.name}</span>
                 <span className="text-[10px] uppercase font-semibold text-[#1a73e8] px-2 py-0.5 rounded-full bg-[#e8f0fe]">
-                  Workspace
+                  {BRAND_CONFIG.badge}
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-[#5f6368] leading-relaxed max-w-sm">
-              “Empowering Educators, Simplifying Administration.” Complete school management and early childhood learning suite trusted by over 20 institutions.
+              “Empowering Educators, Simplifying Administration.” Complete school management and early childhood learning suite trusted by over {BRAND_CONFIG.partnerCount} institutions.
             </p>
 
             <div className="text-[11px] text-[#5f6368] space-y-1.5 pt-1">
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#1a73e8] shrink-0" />
-                <span>Support & WhatsApp: 0335-8009786</span>
+                <span>Support & WhatsApp: {BRAND_CONFIG.supportPhone}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#1a73e8] shrink-0" />
-                <span>inquiries@mschoolecosystem.com</span>
+                <span>{BRAND_CONFIG.supportEmail}</span>
               </div>
             </div>
           </div>
@@ -130,14 +131,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
               School Pilot
             </div>
             <p className="text-xs text-[#5f6368]">
-              Request a free 30-day evaluation for your school or book a guided demonstration.
+              Request a free {BRAND_CONFIG.pilotDuration.toLowerCase()} evaluation for your school or book a guided demonstration.
             </p>
             <div className="pt-1">
               <button
                 onClick={onOpenBooking}
                 className="w-full py-2.5 px-4 rounded-full bg-white hover:bg-[#f1f3f4] text-[#1a73e8] border border-[#dadce0] font-semibold text-xs cursor-pointer transition-colors"
               >
-                Request Free Pilot
+                {CTA_TEXTS.REQUEST_PILOT}
               </button>
             </div>
           </div>
@@ -147,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
         {/* Copyright */}
         <div className="mt-10 pt-6 border-t border-[#dadce0] flex flex-col sm:flex-row items-center justify-between gap-3 text-[#5f6368] text-[11px]">
           <div>
-            &copy; 2026 MSchool Ecosystem. All rights reserved.
+            &copy; {new Date().getFullYear()} {BRAND_CONFIG.name} Ecosystem. All rights reserved.
           </div>
           <div className="flex items-center gap-1">
             <span>Crafted for educators and schools</span>
