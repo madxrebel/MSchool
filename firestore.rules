@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Karachi Expo booth bookings and pilot requests
+    match /expoInquiries/{inquiryId} {
+      allow read, write: if true;
+    }
+    // School inquiries & contact messages
+    match /schoolInquiries/{inquiryId} {
+      allow read, write: if true;
+    }
+    // Public announcements & notices
+    match /announcements/{announcementId} {
+      allow read, write: if true;
+    }
+    // Demo audit logs and submissions
+    match /demoLogs/{logId} {
+      allow read, write: if true;
+    }
+  }
+}
