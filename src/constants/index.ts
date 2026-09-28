@@ -6,14 +6,14 @@
 
 export const CTA_TEXTS = {
   // Primary CTA buttons
-  START_FREE_PILOT: 'Start Free 7-Day Pilot',
-  START_FREE_PILOT_SHORT: 'Get Pilot',
-  START_FREE_PILOT_HERO: 'Start Free 7-Day School Pilot',
+  START_FREE_PILOT: 'Start Free Pilot',
+  START_FREE_PILOT_SHORT: 'Free Pilot',
+  START_FREE_PILOT_HERO: 'Start Free 7-Day Pilot',
   START_FREE_PILOT_SUBMIT: 'Activate 7-Day Free School Pilot',
   
   // Secondary action buttons
-  TRY_DEMO: 'Try Interactive App Demo',
-  LAUNCH_DEMO_SHORT: 'Interactive Demo',
+  TRY_DEMO: 'Launch Interactive Demo',
+  LAUNCH_DEMO_SHORT: 'Live Demo',
   LAUNCH_SIMULATOR: 'Launch in Live Simulator',
   PLAY_MKIDS: 'Play mKids Games',
   REQUEST_DEPLOYMENT: 'Request Deployment',
@@ -37,11 +37,39 @@ export const BRAND_CONFIG = {
 } as const;
 
 export const HERO_CONTENT = {
-  eyebrow: 'The Modern Educational Paradigm',
-  hookQuote: '“Stop managing your school like it\'s 1990. Switch to MSchool and turn your administrative burden into a competitive advantage.”',
-  headlineLead: 'An integrated school ecosystem',
-  headlineAccent: 'designed for the modern classroom.',
-  subtitle: 'All your school operations together in one cohesive workspace. From student enrollment and atomic fee collection to early-learning gamified books and live parent communication.',
+  eyebrow: 'Modern Educational Operating System',
+  primaryHeadline: 'Stop managing your school like it\'s 1990.',
+  headlineLead: 'Stop managing your school',
+  headlineAccent: 'like it\'s 1990.',
+  subheading: 'Turn your administrative burden into a competitive advantage with an integrated workspace for admissions, Bluetooth fee collection, and early learning.',
+  subtitle: 'Turn your administrative burden into a competitive advantage with an integrated workspace for admissions, Bluetooth fee collection, and early learning.',
+  hookQuote: 'Stop managing your school like it\'s 1990.',
+  factsFigures: [
+    {
+      value: '20+',
+      label: 'Partner Schools',
+      sublabel: 'Campuses across Pakistan',
+      color: '#1a73e8',
+    },
+    {
+      value: '25,000+',
+      label: 'Active Students',
+      sublabel: 'Daily attendance & records',
+      color: '#1e8e3e',
+    },
+    {
+      value: '99.98%',
+      label: 'Fee Accuracy',
+      sublabel: 'Bluetooth thermal slips',
+      color: '#f29900',
+    },
+  ],
+  quickBadges: [
+    'Zero-Wait Student Search',
+    '58mm Bluetooth Receipts',
+    'Automated WhatsApp Slips',
+    'Sibling Family Ledger',
+  ],
   trustBullets: [
     'Instant Zero-Wait Student Search',
     '58mm Thermal Bluetooth Receipts',
@@ -126,9 +154,8 @@ export const PRICING_CONFIG = {
 } as const;
 
 export const NAV_ITEMS = [
-  { id: 'ecosystem', label: 'Ecosystem Suite' },
-  { id: 'simulator', label: 'Live App Demo' },
-  { id: 'portals', label: '12 School Portals' },
-  { id: 'features', label: 'Platform Advantage' },
-  { id: 'pricing', label: 'Transparent Pricing' },
+  { id: 'ecosystem', label: 'Ecosystem' },
+  { id: 'portals', label: 'Portals' },
+  { id: 'features', label: 'Advantages' },
+  { id: 'pricing', label: 'Pricing' },
 ] as const;

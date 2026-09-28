@@ -248,59 +248,57 @@ export const ECOSYSTEM_MODULES = [
   {
     id: 'mschool',
     title: 'MSchool Core',
-    subtitle: 'Institutional Administration & Fee Engine',
+    subtitle: 'Counter Administration & Fee Engine',
     badge: 'Core ERP',
     theme: 'navy',
-    description: 'High-speed administrative suite with instant student search, atomic fee submission, 58mm thermal receipts, examinations, and payroll.',
+    description: 'Zero-wait student lookup, atomic fee collection, 58mm thermal receipts, and unified sibling family ledgers.',
     highlights: [
-      'Atomic fee processing with instant thermal receipts',
-      'Unified Family ID linking multiple siblings into one account',
-      'Zero-lag search across 10,000+ student records',
-      'Automated top-defaulter recovery and WhatsApp slips',
-      'Digital student certificates (Birth, Hope, Leaving)'
+      'Atomic 1-click fee collection',
+      '58mm thermal receipt printing',
+      'Unified sibling Family ID',
+      'Zero-wait student search'
     ]
   },
   {
     id: 'mkids',
     title: 'mKids Books & Games',
-    subtitle: 'Curriculum Books + Gamified Interactive Learning',
-    badge: 'Early Childhood EdTech',
+    subtitle: 'Curriculum Books + Interactive Learning',
+    badge: 'Early EdTech',
     theme: 'amber',
-    description: 'Proprietary printed textbooks for Nursery, KG-1, and KG-2 paired with interactive phonics games, handwriting tracing, and math racing.',
+    description: 'Physical syllabus textbooks paired with gamified Math Car Racing, phonics speech, and handwriting tracing.',
     highlights: [
-      'Directly paired with physical school book series',
-      'Math car racing and balloon letter popping games',
-      'Interactive touch screen handwriting letter tracing',
-      'Phonics voice speech practice in English & Urdu',
-      'Motivating star rewards and chapter progress tracking'
+      'Paired with printed textbooks',
+      'Math Car Racing & balloon games',
+      'Letter tracing engine',
+      'Bilingual phonics audio'
     ]
   },
   {
     id: 'mattendance',
     title: 'mAttendance',
-    subtitle: 'High-Velocity Classroom & Staff Attendance',
+    subtitle: 'Classroom & Staff Attendance',
     badge: '15-Sec Sweep',
     theme: 'emerald',
-    description: 'Mark a full 40-student classroom in under 15 seconds. Instant daily stats, staff check-in logs, and automatic SMS parent notifications.',
+    description: 'Mark 40-student classrooms in under 15 seconds with automated absence SMS notifications to parents.',
     highlights: [
-      'Rapid tap-to-cycle sweep interface',
-      'Pre-calculated daily stats with zero loading lag',
-      'Dedicated staff portal with late-arrival tracking',
-      'Real-time absence SMS alert to guardians'
+      '15-second sweep check-in',
+      'Real-time parent absence SMS',
+      'Staff biometric & late tracking',
+      'Instant attendance stats'
     ]
   },
   {
     id: 'maymar',
     title: 'Maymar Academy',
-    subtitle: 'Parent Companion & Student Communication',
-    badge: 'Family Engagement',
+    subtitle: 'Parent Companion & Updates',
+    badge: 'Family App',
     theme: 'rose',
-    description: 'Eliminate lost paper diaries. Parents receive daily homework photos, digital WhatsApp fee receipts, and term report cards in one clean app.',
+    description: 'Direct WhatsApp fee slips, digital examination report cards, and daily homework photo diary.',
     highlights: [
-      'Daily class homework feed with blackboard photo capture',
-      'Instant digital fee receipts saved directly to WhatsApp',
-      'Combined exam mark sheets and progress analytics',
-      'Role-targeted notices for teachers and parents'
+      'Automated WhatsApp receipts',
+      'Digital report cards',
+      'Photo homework feed',
+      'Parent-teacher updates'
     ]
   }
 ];

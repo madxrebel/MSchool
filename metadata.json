@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "MSchool Ecosystem",
+  "description": "Unified cloud ecosystem for school administrative management, early-learning gamified books, and live parent communication.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

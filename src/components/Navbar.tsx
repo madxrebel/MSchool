@@ -38,35 +38,30 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'bg-white border-b border-[#f1f3f4]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        {/* Brand Identity - Google Workspace inspired clean logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc] flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
+        {/* Brand Identity */}
+        <a href="#" className="flex items-center gap-2.5 group shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc] flex items-center justify-center font-bold shadow-2xs group-hover:scale-105 transition-transform">
             <GraduationCap className="w-5 h-5 text-[#1a73e8]" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-[#202124]">
-                {BRAND_CONFIG.name}
-              </span>
-              <span className="text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc]">
-                {BRAND_CONFIG.badge}
-              </span>
-            </div>
-            <p className="text-[11px] text-[#5f6368] font-normal hidden sm:block">
-              {/* {BRAND_CONFIG.tagline} */}
-            </p>
+          <div className="flex items-center gap-1.5">
+            <span className="text-xl font-bold tracking-tight text-[#202124]">
+              {BRAND_CONFIG.name}
+            </span>
+            <span className="text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc]">
+              {BRAND_CONFIG.badge}
+            </span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={`px-3.5 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 activeSection === item.id
                   ? 'bg-[#e8f0fe] text-[#1a73e8] font-semibold'
                   : 'text-[#5f6368] hover:text-[#202124] hover:bg-[#f1f3f4]'
@@ -77,30 +72,30 @@ export const Navbar: React.FC<NavbarProps> = ({
           ))}
         </nav>
 
-        {/* Action Buttons */}
-        <div className="hidden sm:flex items-center gap-2.5">
+        {/* Action Buttons - Pixel-perfect aligned with identical height, border box and baseline */}
+        <div className="hidden sm:flex items-center gap-2">
           <button
             onClick={() => onNavigateToSimulator('mschool')}
-            className="px-4 py-2 rounded-full text-sm font-medium text-[#1a73e8] hover:bg-[#f8fafd] border border-[#dadce0] transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="h-9 px-3.5 rounded-full text-xs font-semibold text-[#1a73e8] bg-white hover:bg-[#f8fafd] border border-[#dadce0] hover:border-[#1a73e8] transition-colors inline-flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
           >
-            <Smartphone className="w-4 h-4 text-[#1a73e8]" />
+            <Smartphone className="w-3.5 h-3.5 text-[#1a73e8]" />
             <span>{CTA_TEXTS.LAUNCH_DEMO_SHORT}</span>
           </button>
           
           <button
             onClick={onOpenBooking}
-            className="px-5 py-2 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-xs transition-all flex items-center gap-1.5 cursor-pointer active:scale-98"
+            className="h-9 px-4 rounded-full text-xs font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] border border-transparent shadow-2xs transition-all inline-flex items-center justify-center gap-1 cursor-pointer active:scale-98 shrink-0"
           >
             <span>{CTA_TEXTS.START_FREE_PILOT}</span>
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
         {/* Mobile Hamburger */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-2">
           <button
             onClick={onOpenBooking}
-            className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1a73e8] text-white sm:hidden"
+            className="h-8 px-3 rounded-full text-xs font-semibold bg-[#1a73e8] text-white sm:hidden inline-flex items-center justify-center"
           >
             {CTA_TEXTS.START_FREE_PILOT_SHORT}
           </button>
@@ -109,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="p-2 rounded-lg text-[#5f6368] hover:text-[#202124] hover:bg-[#f1f3f4]"
             aria-label="Toggle navigation"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
