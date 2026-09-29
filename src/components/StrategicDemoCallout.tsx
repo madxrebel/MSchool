@@ -46,7 +46,7 @@ export const StrategicDemoCallout: React.FC<StrategicDemoCalloutProps> = ({ onOp
         </div>
 
         <p className="text-xs text-[#d2e3fc] mt-4 font-normal">
-          Direct local support from Karachi • Phone & WhatsApp: {BRAND_CONFIG.supportPhoneDisplay}
+          Direct local support from Karachi • Phone & WhatsApp: {BRAND_CONFIG.supportPhoneDisplay} • Zero sales pressure
         </p>
 
       </div>

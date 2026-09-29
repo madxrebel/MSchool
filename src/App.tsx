@@ -34,7 +34,7 @@ export default function App() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
 
-      const sections = ['overview', 'problems', 'interactive-demo', 'outcomes', 'proof', 'why-mschool', 'faq', 'book-demo'];
+      const sections = ['overview', 'interactive-demo', 'problems', 'outcomes', 'proof', 'case-study', 'why-mschool', 'faq', 'book-demo'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {

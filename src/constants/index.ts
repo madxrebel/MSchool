@@ -5,38 +5,44 @@
  */
 
 export const CTA_TEXTS = {
-  // Primary CTA buttons
-  BOOK_DEMO: 'Book a Free Demo',
-  BOOK_DEMO_SHORT: 'Free Demo',
+  // Primary low-risk action CTAs
+  SEE_IN_ACTION: 'See MSchool in Action',
+  BOOK_WALKTHROUGH: 'Book a Free Walkthrough',
+  BOOK_DEMO: 'See MSchool in Action',
+  BOOK_DEMO_SHORT: 'See in Action',
   SEE_HOW_IT_WORKS: 'See How MSchool Works',
-  REQUEST_DEMO: 'Request a Free Demo',
+  REQUEST_DEMO: 'Request a Free Walkthrough',
   TALK_WHATSAPP: 'Talk to Us on WhatsApp',
   INTERACTIVE_DEMO: 'Try Live App Demo',
-  SUBMIT_DEMO: 'Request a Free Demo',
+  SUBMIT_DEMO: 'Request a Free Walkthrough',
   SUBMITTING: 'Arranging Walkthrough...',
-  DONE: 'Walkthrough Requested',
+  DONE: 'Walkthrough Arranged',
   WHATSAPP_LINK: 'https://wa.me/923358009786',
 
+  // Low-risk guarantees & reassurance chips
+  LOW_RISK_MICROCOPY: '15-minute walkthrough • Zero sales pressure • See it running with your fee structure',
+  NO_PRESSURE: 'No pushy sales calls • No credit card required • Zero commitment',
+
   // Backward-compatible keys
-  START_FREE_PILOT: 'Book a Free Demo',
-  START_FREE_PILOT_SHORT: 'Free Demo',
-  START_FREE_PILOT_HERO: 'Book a Free Demo',
-  START_FREE_PILOT_SUBMIT: 'Request a Free Demo',
+  START_FREE_PILOT: 'See MSchool in Action',
+  START_FREE_PILOT_SHORT: 'See in Action',
+  START_FREE_PILOT_HERO: 'See MSchool in Action',
+  START_FREE_PILOT_SUBMIT: 'Request a Free Walkthrough',
   TRY_DEMO: 'See How MSchool Works',
   LAUNCH_DEMO_SHORT: 'Live Demo',
   LAUNCH_SIMULATOR: 'Launch Live Demo',
   PLAY_MKIDS: 'Play mKids Games',
-  REQUEST_PILOT: 'Book a Free Demo',
+  REQUEST_PILOT: 'See MSchool in Action',
 } as const;
 
 export const FREE_PILOT_FORM_CONFIG = {
   sectionEyebrow: 'Free Campus Walkthrough',
-  sectionTitle: 'See MSchool in your school',
+  sectionTitle: 'See MSchool in action for your school',
   sectionDescription: 'Experience the full ecosystem at your campus. Our team assists with data import, staff training, and thermal printer setup.',
-  modalEyebrow: 'Personalized Walkthrough',
-  modalTitle: 'Request Your Free School Demo',
-  modalDescription: 'Experience the MSchool ecosystem with zero setup fee or commitment.',
-  successTitle: 'Demo Request Received',
+  modalEyebrow: 'Zero-Pressure Walkthrough',
+  modalTitle: 'See How MSchool Fits Your School',
+  modalDescription: 'A friendly 15-minute walkthrough over Google Meet or WhatsApp screen share. No sales pressure, no commitment.',
+  successTitle: 'Walkthrough Request Received',
 } as const;
 
 export const PRICING_CONFIG = {
@@ -71,6 +77,7 @@ export const NAV_ITEMS = [
   { id: 'interactive-demo', label: 'Interactive Demo' },
   { id: 'outcomes', label: 'Outcomes' },
   { id: 'proof', label: 'Product Proof' },
+  { id: 'case-study', label: 'Origin Case Study' },
   { id: 'why-mschool', label: 'Why MSchool' },
   { id: 'faq', label: 'FAQ' },
 ] as const;
@@ -80,8 +87,9 @@ export const HERO_CONTENT = {
   primaryHeadline: "Stop managing your school like it's 1990.",
   supportingCopy:
     'MSchool brings admissions, fees, attendance, exams, student records and parent communication into one simple system — built for the realities of running a school in Pakistan.',
-  primaryCta: 'Book a Free Demo',
+  primaryCta: 'See MSchool in Action',
   secondaryCta: 'See How MSchool Works',
+  lowRiskBadge: 'Free 15-min walkthrough • Zero pushy sales tactics • See your fee structure on screen',
   credibilityPoints: [
     '20+ schools already use MSchool',
     'Built inside real family-run schools',
@@ -299,20 +307,53 @@ export const PROOF_SCREENS_CONTENT = {
   ],
 } as const;
 
-export const TRUST_ORIGIN_CONTENT = {
-  eyebrow: 'Genuine Origins',
-  headline: 'We built it for our own schools first.',
-  leadText:
-    'MSchool was not designed in a boardroom by people guessing how schools work.',
-  bodyText:
-    'It was built inside family-run schools, used by real staff, tested in real front offices, classrooms and accounts rooms, and improved through everyday school operations across Pakistan.',
-  proofNumber: '20+',
-  proofLabel: 'Partner institutions running daily operations on MSchool',
+export const CASE_STUDY_CONTENT = {
+  eyebrow: 'Origin Case Study',
+  headline: 'How MSchool was born in a family-run school with 1,450 students.',
+  subheadline:
+    'We didn’t build MSchool from a technology boardroom. We built it standing right behind a crowded Pakistani school fee counter.',
+  storyStages: [
+    {
+      stage: '1. The Breaking Point (2021)',
+      title: '300 parents in queue on the 1st of every month',
+      description:
+        'At our family campus in Karachi, peak fee days were chaos. Parents waited 45 minutes in the morning heat. Excel spreadsheets froze, paper registers had duplicate receipt numbers, and accountants spent evenings recounting cash slips.',
+      metric: '45-min counter wait',
+      tag: 'The Reality',
+    },
+    {
+      stage: '2. Why Existing Software Failed',
+      title: 'Cloud apps built for Western schools didn’t work here',
+      description:
+        'Every software we evaluated had the same fatal flaws: they froze when internet dipped, priced in US dollars, and required trained IT engineers. Our front-desk counter staff needed something fast, simple, and resilient to power outages.',
+      metric: 'Internet dependency',
+      tag: 'The Barrier',
+    },
+    {
+      stage: '3. Building on the Front Counter',
+      title: 'Tested in real front desks, classrooms, and accounts rooms',
+      description:
+        'We built MSchool right on the counter computer. We introduced instant 58mm ink-free thermal receipts (2-second print), unified sibling accounts under one Family ID, and local-first offline storage that never slows down.',
+      metric: '2-sec receipt print',
+      tag: 'The Breakthrough',
+    },
+    {
+      stage: '4. The Measurable Result',
+      title: 'Queue dropped from 45 minutes to 3 minutes',
+      description:
+        'Parents walked in, paid, received their thermal receipt in seconds, and walked out. Class roll calls dropped from 15 minutes of teacher time to 15 seconds. End-of-month reconciliation happened in one click with 0 lost slips.',
+      metric: '3-min counter queue',
+      tag: 'The Outcome',
+    },
+  ],
+  expansionTitle: 'From one family campus to 20+ institutions',
+  expansionDescription:
+    'Principals from neighboring schools saw the thermal receipts and rapid attendance sweeps and asked to use the software. Today, over 20 institutions and 25,000+ enrolled students run daily operations on MSchool.',
   quote:
     '“When hundreds of parents visit the fee counter on peak days, you cannot afford frozen software. MSchool prints 58mm thermal receipts in two seconds and updates balances with zero errors.”',
   quoteAuthor: 'Wali Khan',
   quoteRole: 'Principal & Campus Administrator, Active Partner School',
-  groundedMessage: 'We understand your environment because we operate in it.',
+  groundedMessage: 'We understand your environment because we operate in it every single day.',
 } as const;
 
 export const PAKISTAN_CONTEXT_CONTENT = {
@@ -439,36 +480,48 @@ export const ECOSYSTEM_CONTENT = {
   ],
 } as const;
 
-export const FAQS_CONTENT = [
+export const DIRECT_OBJECTIONS_FAQS = [
   {
-    question: 'Is MSchool only for large schools?',
-    answer:
-      'No. MSchool is built for schools of all sizes — from neighborhood academies with 150 students to multi-branch institutions with thousands of pupils. The system scales effortlessly to fit your campus.',
+    question: 'Will this work with our internet?',
+    tag: 'Infrastructure',
+    shortAnswer: 'Yes. MSchool is local-first.',
+    fullAnswer:
+      'Yes, absolutely. MSchool does not depend on a continuous fast internet connection. Counter fee collections, student searches, and morning attendance work locally on your office computer or tablet. When internet is available, it automatically synchronizes in the background without freezing your screen.',
   },
   {
-    question: 'Does it work without a strong internet connection?',
-    answer:
-      'Yes. MSchool is designed for the infrastructure realities of Pakistani schools. Daily counter operations, student search, and attendance work locally on the device and sync whenever connectivity is present.',
+    question: 'Can my accountant, admin, and teachers actually use it?',
+    tag: 'Usability',
+    shortAnswer: 'Designed for non-IT staff.',
+    fullAnswer:
+      'Yes. If your staff can use WhatsApp and browse an Android phone, they can operate MSchool in 10 minutes. The interface has zero confusing technical jargon. A counter clerk only needs to search a student’s name, click the unpaid month, and click “Print Receipt”. Role-based permissions ensure each person only sees what they need.',
   },
   {
-    question: 'Can different staff have different access levels?',
-    answer:
-      'Yes. You control role-based access completely. For instance, the fee accountant cannot modify student examination marks, teachers only access their class attendance and diary, while the principal and owner have complete school visibility.',
+    question: 'Can I see the system before deciding?',
+    tag: 'Risk-Free',
+    shortAnswer: '100% free live walkthrough.',
+    fullAnswer:
+      'Yes. We offer a 15-minute live screen walkthrough tailored specifically to your campus. You can bring your principal, accountant, or admin. We will show you how MSchool handles your actual fee structure, sibling rules, and attendance before you commit to anything.',
   },
   {
-    question: 'Can we see the software before committing?',
-    answer:
-      'Absolutely. We provide a personalized, zero-obligation live walkthrough with your administration team so you can see how MSchool handles your actual fee structure and daily workflows before making any decision.',
+    question: 'How difficult is it to get started?',
+    tag: 'Onboarding',
+    shortAnswer: 'We handle the setup for you.',
+    fullAnswer:
+      'You do not have to re-type thousands of student records manually. If you have existing student data in Excel, spreadsheets, or paper registers, our onboarding team assists with importing your classes, sections, and student profiles. We also assist with connecting your 58mm thermal printer.',
   },
   {
-    question: 'How do we get started?',
-    answer:
-      'After your initial demo walkthrough, our team assists with importing your existing student records from Excel or registers, setting up your fee structure, and guiding your staff through their daily operations.',
+    question: 'Is this suitable for my type and size of school?',
+    tag: 'Fit',
+    shortAnswer: 'Built for 150 to 3,000+ students.',
+    fullAnswer:
+      'MSchool is designed specifically for private, matriculation, grammar, and model schools across Pakistan — from single-campus academies with 150 students up to multi-branch networks with 3,000+ enrolled students. It supports all standard Pakistani classes (Nursery, KG, Class 1–10) and sibling fee arrangements.',
   },
   {
-    question: 'Is MSchool available for schools across Pakistan?',
-    answer:
-      'Yes. MSchool is already active in 20+ partner institutions across Pakistan with full local currency (PKR), 58mm thermal printer support, and local WhatsApp integration.',
+    question: 'What happens after I request a demo walkthrough?',
+    tag: 'Process',
+    shortAnswer: 'No pushy sales calls, guaranteed.',
+    fullAnswer:
+      'Here is our exact 3-step process:\n1. Our coordinator will message you on WhatsApp or call your number to pick a 15-minute slot convenient for you.\n2. We conduct a friendly live screen walkthrough (over Google Meet or WhatsApp screen share) showing the exact workflows your staff care about.\n3. We leave you with full information to discuss with your management in your own time. No high-pressure sales calls or spam.',
   },
 ] as const;
 
@@ -476,9 +529,26 @@ export const DEMO_FORM_CONFIG = {
   eyebrow: 'Personalized Campus Walkthrough',
   headline: 'Ready to see what MSchool can do for your school?',
   subheadline:
-    'Book a free demo and see how your school’s everyday operations can work from one connected system.',
-  cardTitle: "Let's see if MSchool is right for your school.",
-  cardSubtitle: 'Bring your principal or administrator for a practical walkthrough.',
+    'See how your school’s everyday operations can run from one connected system. No sales pressure, no commitment.',
+  cardTitle: "See MSchool in action for your school.",
+  cardSubtitle: 'Pick a time that fits your school day for a practical 15-minute walkthrough.',
+  steps: [
+    {
+      step: '1',
+      title: 'Coordinate a convenient time',
+      desc: 'We message on WhatsApp to find a 15-min slot that fits your schedule.',
+    },
+    {
+      step: '2',
+      title: 'See your real fee structure',
+      desc: 'Live screen walkthrough tailored to your counter, admissions, and classes.',
+    },
+    {
+      step: '3',
+      title: 'Zero pressure to decide',
+      desc: 'No contracts, no credit cards. Discuss with your leadership in your own time.',
+    },
+  ],
   labels: {
     name: 'Your Name *',
     namePlaceholder: 'e.g. Asad Ullah Khan',
@@ -488,7 +558,7 @@ export const DEMO_FORM_CONFIG = {
     phonePlaceholder: '0300-1234567',
     studentCount: 'Estimated Active Students',
     message: 'Anything you’d like us to know? (Optional)',
-    messagePlaceholder: 'e.g. Number of branches, existing software used, or specific challenges...',
+    messagePlaceholder: 'e.g. Number of branches, current challenges with fee queues or registers...',
   },
   studentCountOptions: [
     'Under 300 Students',
@@ -496,6 +566,6 @@ export const DEMO_FORM_CONFIG = {
     '500 - 1000 Students',
     '1000+ Students',
   ],
-  submitButton: 'Request a Free Demo',
-  reassurance: 'We will contact you to arrange a convenient time for a walkthrough.',
+  submitButton: 'See MSchool in Action',
+  reassurance: 'Zero commitment • No pushy sales calls • Walkthrough tailored to your school',
 } as const;

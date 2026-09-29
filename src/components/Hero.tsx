@@ -1,11 +1,11 @@
 import React from 'react';
 import { 
   Smartphone, 
-  CheckCircle2, 
   ChevronRight,
   ShieldCheck,
   Building2,
-  WifiOff
+  WifiOff,
+  Check
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { CTA_TEXTS, HERO_CONTENT } from '../constants';
@@ -56,8 +56,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
           {HERO_CONTENT.supportingCopy}
         </motion.p>
 
-        {/* ACTION CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-10">
+        {/* ACTION CTAs (Low-risk, action-oriented) */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-3">
           <button
             onClick={onOpenBooking}
             className="w-full sm:w-auto h-12 px-7 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] transition-all shadow-xs hover:shadow inline-flex items-center justify-center gap-2 cursor-pointer active:scale-98"
@@ -73,6 +73,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
             <Smartphone className="w-4 h-4 text-[#1a73e8]" />
             <span>{HERO_CONTENT.secondaryCta}</span>
           </button>
+        </div>
+
+        {/* Low-Risk Microcopy Directly Under CTAs */}
+        <div className="flex flex-wrap items-center justify-center gap-3 text-[11px] text-[#5f6368] mb-10 font-medium">
+          <span className="flex items-center gap-1 text-[#202124]">
+            <Check className="w-3.5 h-3.5 text-[#1e8e3e]" />
+            Free 15-minute walkthrough
+          </span>
+          <span className="hidden sm:inline">•</span>
+          <span className="flex items-center gap-1 text-[#202124]">
+            <Check className="w-3.5 h-3.5 text-[#1e8e3e]" />
+            Zero commitment or pushy sales calls
+          </span>
+          <span className="hidden sm:inline">•</span>
+          <span className="flex items-center gap-1 text-[#202124]">
+            <Check className="w-3.5 h-3.5 text-[#1e8e3e]" />
+            See your fee vouchers on screen
+          </span>
         </div>
 
         {/* CREDIBILITY BAR (Directly under CTA) */}
