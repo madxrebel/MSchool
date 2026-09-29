@@ -1,6 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import { FREE_PILOT_FORM_CONFIG } from '../constants';
+import { DEMO_FORM_CONFIG } from '../constants';
 import { PilotRequestForm } from './PilotRequestForm';
 
 interface BookingModalProps {
@@ -27,19 +27,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) =
         {/* Modal Header */}
         <div className="mb-5 pr-8">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#1a73e8] block mb-1">
-            {FREE_PILOT_FORM_CONFIG.modalEyebrow}
+            {DEMO_FORM_CONFIG.eyebrow}
           </span>
           <h3 className="text-xl sm:text-2xl font-bold text-[#202124] mb-1">
-            {FREE_PILOT_FORM_CONFIG.modalTitle}
+            {DEMO_FORM_CONFIG.cardTitle}
           </h3>
           <p className="text-xs text-[#5f6368]">
-            {FREE_PILOT_FORM_CONFIG.modalDescription}
+            {DEMO_FORM_CONFIG.cardSubtitle}
           </p>
         </div>
 
-        {/* Unified Pilot Form */}
+        {/* Demo Request Form */}
         <PilotRequestForm 
-          source="Modal Free Pilot Form" 
+          source="Modal Demo Request" 
           onClose={onClose}
           isModal={true}
         />

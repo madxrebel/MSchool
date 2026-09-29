@@ -1,11 +1,11 @@
 import React from 'react';
 import { 
   GraduationCap, 
-  MapPin, 
   Phone, 
   Mail, 
-  Heart, 
-  ChevronRight 
+  MessageSquare,
+  ChevronRight,
+  ShieldCheck 
 } from 'lucide-react';
 import { CTA_TEXTS, BRAND_CONFIG } from '../constants';
 
@@ -18,35 +18,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
   return (
     <footer className="bg-[#f8f9fa] text-[#5f6368] border-t border-[#dadce0] text-xs">
       
-      {/* Top Pre-Footer Callout (Google Workspace Style) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-6">
-        <div className="bg-[#f8fafd] border border-[#d2e3fc] rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1.5 text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#1a73e8]">
-              Get Started with {BRAND_CONFIG.name}
-            </span>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#202124]">
-              Ready to transform your school's daily administration?
-            </h3>
-            <p className="text-sm text-[#5f6368]">
-              Join {BRAND_CONFIG.partnerCount} partner institutions and experience zero-lag school operations.
-            </p>
-          </div>
-          <button
-            onClick={onOpenBooking}
-            className="px-6 py-3.5 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold text-sm shadow-xs whitespace-nowrap cursor-pointer transition-all active:scale-98 flex items-center gap-1.5"
-          >
-            <span>{CTA_TEXTS.START_FREE_PILOT}</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
       {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
-          {/* Brand */}
+          {/* Brand & Direct Contact */}
           <div className="space-y-3 md:col-span-2">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-[#e8f0fe] text-[#1a73e8] flex items-center justify-center font-bold">
@@ -61,13 +37,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
             </div>
 
             <p className="text-xs text-[#5f6368] leading-relaxed max-w-sm">
-              “Empowering Educators, Simplifying Administration.” Complete school management and early childhood learning suite trusted by over {BRAND_CONFIG.partnerCount} institutions.
+              School management software engineered for the operational realities of Pakistani schools. Trusted by {BRAND_CONFIG.trustClaim}.
             </p>
 
-            <div className="text-[11px] text-[#5f6368] space-y-1.5 pt-1">
+            <div className="text-[11px] text-[#5f6368] space-y-2 pt-1">
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#1a73e8] shrink-0" />
-                <span>Support & WhatsApp: {BRAND_CONFIG.supportPhone}</span>
+                <span>Direct Support: <a href="tel:03358009786" className="text-[#202124] font-medium hover:underline">{BRAND_CONFIG.supportPhoneDisplay}</a></span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MessageSquare className="w-3.5 h-3.5 text-[#137333] shrink-0" />
+                <a href={BRAND_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-[#137333] font-medium hover:underline">
+                  Chat with us on WhatsApp
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#1a73e8] shrink-0" />
@@ -76,86 +58,75 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
             </div>
           </div>
 
-          {/* Ecosystem Products */}
+          {/* Quick Navigation */}
           <div className="space-y-2.5">
             <div className="font-bold text-[#202124] uppercase text-[11px] tracking-wider">
-              Ecosystem Products
+              Quick Navigation
             </div>
             <ul className="space-y-2 text-xs text-[#5f6368]">
               <li>
-                <button 
-                  onClick={() => onNavigateToSimulator('mschool')}
-                  className="hover:text-[#1a73e8] cursor-pointer transition-colors"
-                >
-                  MSchool Core Management
-                </button>
+                <a href="#overview" className="hover:text-[#1a73e8] transition-colors">
+                  Overview
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigateToSimulator('mkids')}
-                  className="hover:text-[#b06000] cursor-pointer transition-colors"
-                >
-                  mKids Early Learning Suite
-                </button>
+                <a href="#problems" className="hover:text-[#1a73e8] transition-colors">
+                  Problems We Solve
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigateToSimulator('mschool')}
-                  className="hover:text-[#137333] cursor-pointer transition-colors"
-                >
-                  mAttendance High-Speed Sweep
-                </button>
+                <a href="#interactive-demo" className="hover:text-[#1a73e8] transition-colors">
+                  Interactive Demo
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigateToSimulator('mschool')}
-                  className="hover:text-[#c5221f] cursor-pointer transition-colors"
-                >
-                  Maymar Academy Parent App
-                </button>
+                <a href="#outcomes" className="hover:text-[#1a73e8] transition-colors">
+                  Outcomes & Capabilities
+                </a>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigateToSimulator('thermal')}
-                  className="hover:text-[#1a73e8] cursor-pointer transition-colors"
-                >
-                  58mm Thermal Printer Engine
-                </button>
+                <a href="#proof" className="hover:text-[#1a73e8] transition-colors">
+                  Real Product Screens
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:text-[#1a73e8] transition-colors">
+                  Frequently Asked Questions
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Quick Access */}
-          <div className="space-y-2.5">
+          {/* Call to Action */}
+          <div className="space-y-3">
             <div className="font-bold text-[#202124] uppercase text-[11px] tracking-wider">
-              School Pilot
+              Get Started
             </div>
-            <p className="text-xs text-[#5f6368]">
-              Request a free {BRAND_CONFIG.pilotDuration.toLowerCase()} evaluation for your school or book a guided demonstration.
+            <p className="text-xs text-[#5f6368] leading-relaxed">
+              Book a free walkthrough for your principal, accountant, or school owner.
             </p>
-            <div className="pt-1">
-              <button
-                onClick={onOpenBooking}
-                className="w-full py-2.5 px-4 rounded-full bg-white hover:bg-[#f1f3f4] text-[#1a73e8] border border-[#dadce0] font-semibold text-xs cursor-pointer transition-colors"
-              >
-                {CTA_TEXTS.REQUEST_PILOT}
-              </button>
-            </div>
+            <button
+              onClick={onOpenBooking}
+              className="w-full h-10 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
+            >
+              <span>{CTA_TEXTS.BOOK_DEMO}</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
         </div>
 
-        {/* Copyright */}
-        <div className="mt-10 pt-6 border-t border-[#dadce0] flex flex-col sm:flex-row items-center justify-between gap-3 text-[#5f6368] text-[11px]">
+        {/* Bottom Bar */}
+        <div className="mt-10 pt-6 border-t border-[#dadce0] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#5f6368]">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#1e8e3e]" />
+            <span>Built inside family-run schools • Active across 20+ Pakistani institutions</span>
+          </div>
+
           <div>
-            &copy; {new Date().getFullYear()} {BRAND_CONFIG.name} Ecosystem. All rights reserved.
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Crafted for educators and schools</span>
-            <Heart className="w-3 h-3 text-[#d93025] fill-[#d93025]" />
+            © {new Date().getFullYear()} MSchool Ecosystem. All rights reserved.
           </div>
         </div>
-
       </div>
     </footer>
   );

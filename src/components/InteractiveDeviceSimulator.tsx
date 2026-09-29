@@ -265,19 +265,19 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
   };
 
   return (
-    <section id="simulator" className="py-16 sm:py-20 bg-white text-[#202124] relative border-b border-[#dadce0]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="interactive-demo" className="py-14 sm:py-18 bg-white text-[#202124] relative border-b border-[#dadce0]">
+      <div id="simulator" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs uppercase font-bold tracking-wider text-[#1a73e8] mb-2 block">
-            Live Interactive Simulator
+          <span className="text-xs uppercase font-bold tracking-wider text-[#1a73e8] mb-1.5 block">
+            Interactive Product Proof
           </span>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[#202124] mb-3">
-            Experience the apps live in your browser.
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#202124] mb-2.5">
+            See how everyday school tasks become faster and simpler.
           </h2>
-          <p className="text-sm sm:text-base text-[#5f6368]">
-            Click through real operational workflows. Test fee submissions with instant 58mm receipts, sweep classroom attendance in seconds, or play children&apos;s early learning games.
+          <p className="text-xs sm:text-sm text-[#5f6368] leading-relaxed">
+            Test real operational workflows directly in your browser. Collect fees with instant 58mm thermal receipts, sweep attendance in 15 seconds, and explore our learning games.
           </p>
 
           {/* Mode Switcher Tabs (Google Style Segmented Pill) */}
