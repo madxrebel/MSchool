@@ -26,7 +26,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<string>('overview');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Active section observer
+  
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
