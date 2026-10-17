@@ -102,7 +102,7 @@ export const PrincipalStory: React.FC<PrincipalStoryProps> = ({ onOpenBooking })
               </figcaption>
             </figure>
 
-            <div className="p-5 sm:p-6 rounded-3xl bg-[#e8f0fe]/70 border border-[#d2e3fc] flex items-center gap-5">
+            <div className="beam-border p-5 sm:p-6 rounded-3xl bg-[#e8f0fe] border border-[#d2e3fc] flex items-center gap-5">
               <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#1a73e8] shrink-0">
                 {STORY.statValue}
               </span>
@@ -198,7 +198,7 @@ export const PrincipalStory: React.FC<PrincipalStoryProps> = ({ onOpenBooking })
         <div className="mt-10 text-center">
           <button
             onClick={onOpenBooking}
-            className="h-12 px-7 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-98"
+            className="beam-border [--beam-a:#34a853] [--beam-b:#a8dab5] h-12 px-7 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-98"
           >
             <span>See how your day could look</span>
             <ChevronRight className="w-4 h-4" />
