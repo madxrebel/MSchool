@@ -6,7 +6,6 @@ import { PrincipalStory } from './components/PrincipalStory';
 import { ResultCardsStory } from './components/ResultCardsStory';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
-import { OutcomeSolutions } from './components/OutcomeSolutions';
 import { ProductScreenshotsProof } from './components/ProductScreenshotsProof';
 import { PakistanContextSection } from './components/PakistanContextSection';
 import { PartnersAndStory } from './components/PartnersAndStory';
@@ -98,12 +97,6 @@ export default function App() {
         {/* Step 5: Before vs After Operational Comparison */}
         <BeforeAfterSection 
           onOpenBooking={() => setBookingModalOpen(true)}
-        />
-
-        {/* Step 6: Outcome-Based Product Solutions */}
-        <OutcomeSolutions 
-          onOpenBooking={() => setBookingModalOpen(true)}
-          onNavigateToSimulator={handleNavigateToSimulator}
         />
 
         {/* Step 7: Real Product Screens as Proof */}

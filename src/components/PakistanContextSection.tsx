@@ -50,7 +50,7 @@ export const PakistanContextSection: React.FC<PakistanContextSectionProps> = ({ 
           </p>
         </div>
 
-        {/* 5 Practical Advantages Grid */}
+        {/* Practical Advantages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4.5 mb-10">
           {PAKISTAN_CONTEXT_CONTENT.points.map((point, idx) => (
             <motion.div
@@ -88,7 +88,7 @@ export const PakistanContextSection: React.FC<PakistanContextSectionProps> = ({ 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: 0.25 }}
-            className="p-6 rounded-2xl bg-[#e8f0fe]/60 border border-[#d2e3fc] flex flex-col justify-between"
+            className="p-6 rounded-2xl bg-[#e8f0fe]/60 border border-[#d2e3fc] flex flex-col justify-between md:col-span-2 lg:col-span-2"
           >
             <div className="space-y-2">
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#1a73e8] block">
