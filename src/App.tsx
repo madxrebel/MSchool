@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SchoolsMarquee } from './components/SchoolsMarquee';
+import { PrincipalStory } from './components/PrincipalStory';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
 import { OutcomeSolutions } from './components/OutcomeSolutions';
@@ -83,6 +84,8 @@ export default function App() {
         />
 
         <SchoolsMarquee />
+
+        <PrincipalStory onOpenBooking={() => setBookingModalOpen(true)} />
 
         {/* Step 4: Problem Recognition */}
         <ProblemSection 
