@@ -8,7 +8,6 @@ import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
 import { ProductScreenshotsProof } from './components/ProductScreenshotsProof';
 import { PartnersAndStory } from './components/PartnersAndStory';
-import { WhyChooseSection } from './components/WhyChooseSection';
 import { EcosystemSection } from './components/EcosystemSection';
 import { StrategicDemoCallout } from './components/StrategicDemoCallout';
 import { FAQSection } from './components/FAQSection';
@@ -106,11 +105,6 @@ export default function App() {
 
         {/* Step 9: Our story (school owners first) */}
         <PartnersAndStory />
-
-        {/* Step 10: Why Schools Choose MSchool (Benefits) */}
-        <WhyChooseSection 
-          onOpenBooking={() => setBookingModalOpen(true)}
-        />
 
         {/* Step 11: The Bigger Connected Ecosystem */}
         <EcosystemSection 
