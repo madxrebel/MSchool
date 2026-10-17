@@ -110,7 +110,7 @@ export default function App() {
           onOpenBooking={() => setBookingModalOpen(true)}
         />
 
-        {/* Step 9: Trust / Origin Story (20+ Partner Schools) */}
+        {/* Step 9: Our story (school owners first) */}
         <PartnersAndStory />
 
         {/* Step 10: Why Schools Choose MSchool (Benefits) */}

@@ -120,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimul
         <div className="mt-10 pt-6 border-t border-[#dadce0] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#5f6368]">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-3.5 h-3.5 text-[#1e8e3e]" />
-            <span>Built inside family-run schools • Active across 20+ Pakistani institutions</span>
+            <span>Built by school owners since 2000 • Used daily by partner schools</span>
           </div>
 
           <div>

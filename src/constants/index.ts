@@ -73,8 +73,7 @@ export const BRAND_CONFIG = {
   supportPhoneDisplay: '0335-8009786',
   supportEmail: 'inquiries@mschoolecosystem.com',
   whatsappUrl: 'https://wa.me/923358009786',
-  trustClaim: '20+ schools already run on MSchool',
-  partnerCount: '20+',
+  trustClaim: 'partner schools that run on MSchool every day',
   pilotDuration: 'Free Walkthrough',
 } as const;
 
@@ -98,7 +97,7 @@ export const HERO_CONTENT = {
   secondaryCta: 'See How MSchool Works',
   lowRiskBadge: 'Free 15-min walkthrough • Zero pushy sales tactics • See your fee structure on screen',
   credibilityPoints: [
-    '20+ schools already use MSchool',
+    'Used every day in partner schools',
     'Built inside real family-run schools',
     'Designed to work reliably on weak internet',
   ],

@@ -94,11 +94,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
         >
           <div className="p-3 bg-white rounded-xl border border-[#dadce0]/60 flex items-center justify-center gap-2.5 text-xs text-[#202124] font-medium shadow-2xs">
             <Building2 className="w-4 h-4 text-[#1a73e8] shrink-0" />
-            <span><strong>20+ schools</strong> already use MSchool</span>
+            <span><strong>Partner schools</strong> use MSchool every day</span>
           </div>
           <div className="p-3 bg-white rounded-xl border border-[#dadce0]/60 flex items-center justify-center gap-2.5 text-xs text-[#202124] font-medium shadow-2xs">
             <ShieldCheck className="w-4 h-4 text-[#1e8e3e] shrink-0" />
-            <span>Built inside real family-run schools</span>
+            <span>Built by school owners since 2000</span>
           </div>
           <div className="p-3 bg-white rounded-xl border border-[#dadce0]/60 flex items-center justify-center gap-2.5 text-xs text-[#202124] font-medium shadow-2xs">
             <WifiOff className="w-4 h-4 text-[#f29900] shrink-0" />
