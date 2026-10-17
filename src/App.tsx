@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SchoolsMarquee } from './components/SchoolsMarquee';
 import { PrincipalStory } from './components/PrincipalStory';
+import { ResultCardsStory } from './components/ResultCardsStory';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
 import { OutcomeSolutions } from './components/OutcomeSolutions';
@@ -86,6 +87,8 @@ export default function App() {
         <SchoolsMarquee />
 
         <PrincipalStory onOpenBooking={() => setBookingModalOpen(true)} />
+
+        <ResultCardsStory onOpenBooking={() => setBookingModalOpen(true)} />
 
         {/* Step 4: Problem Recognition */}
         <ProblemSection 
