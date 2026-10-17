@@ -7,7 +7,6 @@ import { ResultCardsStory } from './components/ResultCardsStory';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
 import { ProductScreenshotsProof } from './components/ProductScreenshotsProof';
-import { PakistanContextSection } from './components/PakistanContextSection';
 import { PartnersAndStory } from './components/PartnersAndStory';
 import { WhyChooseSection } from './components/WhyChooseSection';
 import { EcosystemSection } from './components/EcosystemSection';
@@ -103,11 +102,6 @@ export default function App() {
         <ProductScreenshotsProof 
           onOpenBooking={() => setBookingModalOpen(true)}
           onNavigateToSimulator={handleNavigateToSimulator}
-        />
-
-        {/* Step 8: Built for Real Pakistani Schools */}
-        <PakistanContextSection 
-          onOpenBooking={() => setBookingModalOpen(true)}
         />
 
         {/* Step 9: Our story (school owners first) */}
