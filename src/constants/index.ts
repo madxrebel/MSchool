@@ -4,6 +4,11 @@
  * Outcome-oriented, grounded in Pakistani school operations, zero generic fluff.
  */
 
+// Where the "Login" button sends existing customers (the main web portal).
+// Override per environment with VITE_PORTAL_URL (see .env.example).
+export const PORTAL_URL: string =
+  (import.meta as any).env?.VITE_PORTAL_URL || 'https://app.mschool.pk/login';
+
 export const CTA_TEXTS = {
   // Primary low-risk action CTAs
   SEE_IN_ACTION: 'See MSchool in Action',
@@ -14,6 +19,8 @@ export const CTA_TEXTS = {
   REQUEST_DEMO: 'Request a Free Walkthrough',
   TALK_WHATSAPP: 'Talk to Us on WhatsApp',
   INTERACTIVE_DEMO: 'Try Live App Demo',
+  LOGIN: 'Login',
+  BOOK_FREE_DEMO: 'Book a Free Demo',
   SUBMIT_DEMO: 'Request a Free Walkthrough',
   SUBMITTING: 'Arranging Walkthrough...',
   DONE: 'Walkthrough Arranged',
@@ -86,7 +93,7 @@ export const HERO_CONTENT = {
   eyebrow: 'School Management System for Schools in Pakistan',
   primaryHeadline: "Stop managing your school like it's 1990.",
   supportingCopy:
-    'MSchool brings admissions, fees, attendance, exams, student records and parent communication into one simple system — built for the realities of running a school in Pakistan.',
+    'Admissions, fees, attendance, exams and parent updates in one simple system, built for Pakistani schools.',
   primaryCta: 'See MSchool in Action',
   secondaryCta: 'See How MSchool Works',
   lowRiskBadge: 'Free 15-min walkthrough • Zero pushy sales tactics • See your fee structure on screen',

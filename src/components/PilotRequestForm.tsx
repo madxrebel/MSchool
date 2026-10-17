@@ -33,6 +33,15 @@ export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
       setErrorMessage('Please provide your name, school name, and phone/WhatsApp number.');
       return;
     }
+    // Keep in sync with firestore.rules (phone 7-20 chars, name <=120, school <=160, notes <=1000).
+    if (phone.trim().length < 7 || phone.trim().length > 20) {
+      setErrorMessage('Please enter a valid phone/WhatsApp number (7-20 characters).');
+      return;
+    }
+    if (name.trim().length > 120 || schoolName.trim().length > 160 || message.trim().length > 1000) {
+      setErrorMessage('One of the fields is too long. Please shorten it and try again.');
+      return;
+    }
 
     setIsSubmitting(true);
     setErrorMessage(null);

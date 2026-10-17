@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { InteractiveDeviceSimulator } from './components/InteractiveDeviceSimulator';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
 import { OutcomeSolutions } from './components/OutcomeSolutions';
@@ -15,9 +14,7 @@ import { FAQSection } from './components/FAQSection';
 import { FinalDemoSection } from './components/FinalDemoSection';
 import { BookingModal } from './components/BookingModal';
 import { Footer } from './components/Footer';
-import { CTA_TEXTS } from './constants';
 import { 
-  Smartphone, 
   ArrowUp,
   MessageSquare
 } from 'lucide-react';
@@ -81,11 +78,7 @@ export default function App() {
         <Hero 
           onOpenBooking={() => setBookingModalOpen(true)}
           onNavigateToSimulator={handleNavigateToSimulator}
-        />
-
-        {/* Step 3: Interactive Product Proof (Immediate experience) */}
-        <InteractiveDeviceSimulator 
-          initialTab={simulatorInitialTab}
+          simulatorInitialTab={simulatorInitialTab}
         />
 
         {/* Step 4: Problem Recognition */}
@@ -148,48 +141,6 @@ export default function App() {
         onOpenBooking={() => setBookingModalOpen(true)}
         onNavigateToSimulator={handleNavigateToSimulator}
       />
-
-      {/* Floating Quick Action Dock */}
-      <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 border border-[#dadce0] shadow-lg backdrop-blur-md">
-        <a
-          href="#problems"
-          className="px-3 py-1.5 rounded-full text-xs font-medium text-[#5f6368] hover:text-[#202124] transition-colors"
-        >
-          Problems
-        </a>
-        <button
-          onClick={() => handleNavigateToSimulator('mschool')}
-          className="px-3 py-1.5 rounded-full text-xs font-medium flex items-center gap-1 text-[#1a73e8] hover:bg-[#e8f0fe] transition-colors cursor-pointer"
-        >
-          <Smartphone className="w-3.5 h-3.5 text-[#1a73e8]" />
-          <span>Interactive Demo</span>
-        </button>
-        <a
-          href="#outcomes"
-          className="px-3 py-1.5 rounded-full text-xs font-medium text-[#5f6368] hover:text-[#202124] transition-colors"
-        >
-          Outcomes
-        </a>
-        <a
-          href="#proof"
-          className="px-3 py-1.5 rounded-full text-xs font-medium text-[#5f6368] hover:text-[#202124] transition-colors"
-        >
-          Screens
-        </a>
-        <a
-          href="#faq"
-          className="px-3 py-1.5 rounded-full text-xs font-medium text-[#5f6368] hover:text-[#202124] transition-colors"
-        >
-          FAQ
-        </a>
-        <div className="w-[1px] h-4 bg-[#dadce0] mx-1" />
-        <button
-          onClick={() => setBookingModalOpen(true)}
-          className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1a73e8] hover:bg-[#1557b0] text-white shadow-xs transition-colors cursor-pointer"
-        >
-          {CTA_TEXTS.BOOK_DEMO_SHORT}
-        </button>
-      </div>
 
       {/* Floating Scroll to Top Button */}
       <AnimatePresence>

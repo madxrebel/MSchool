@@ -38,9 +38,11 @@ import { Student, StaffMember, DiaryEntry, Announcement, FeeReceipt } from '../t
 
 interface SimulatorProps {
   initialTab?: 'mschool' | 'mkids' | 'thermal';
+  /** Render only the tabs + phone (no section chrome/heading), for use inside the Hero. */
+  embedded?: boolean;
 }
 
-export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTab = 'mschool' }) => {
+export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTab = 'mschool', embedded = false }) => {
   const [activeTab, setActiveTab] = useState<'mschool' | 'mkids' | 'thermal'>(initialTab);
 
   useEffect(() => {
@@ -256,6 +258,8 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
     );
   };
 
+  const Wrapper = embedded ? 'div' : 'section';
+
   const attSummary = {
     total: attendanceList.length,
     present: attendanceList.filter((a) => a.status === 'PRESENT').length,
@@ -265,11 +269,12 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
   };
 
   return (
-    <section id="interactive-demo" className="py-14 sm:py-18 bg-white text-[#202124] relative border-b border-[#dadce0]">
-      <div id="simulator" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Wrapper {...(embedded ? {} : { id: 'interactive-demo' })} className={embedded ? 'text-[#202124] relative' : 'py-14 sm:py-18 bg-white text-[#202124] relative border-b border-[#dadce0]'}>
+      <div id={embedded ? undefined : 'simulator'} className={embedded ? '' : 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'}>
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className={`text-center max-w-2xl mx-auto ${embedded ? 'hidden' : 'mb-10'}`}>
+          {!embedded && (<>
           <span className="text-xs uppercase font-bold tracking-wider text-[#1a73e8] mb-1.5 block">
             Interactive Product Proof
           </span>
@@ -279,9 +284,10 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
           <p className="text-xs sm:text-sm text-[#5f6368] leading-relaxed">
             Test real operational workflows directly in your browser. Collect fees with instant 58mm thermal receipts, sweep attendance in 15 seconds, and explore our learning games.
           </p>
+          </>)}
 
           {/* Mode Switcher Tabs (Google Style Segmented Pill) */}
-          <div className="mt-6 inline-flex p-1 rounded-full bg-[#f1f3f4] border border-[#dadce0] shadow-xs max-w-md w-full justify-between">
+          <div className={`${embedded ? '' : 'mt-6'} inline-flex p-1 rounded-full bg-[#f1f3f4] border border-[#dadce0] shadow-xs max-w-md w-full justify-between`}>
             <button
               onClick={() => setActiveTab('mschool')}
               className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
@@ -319,16 +325,78 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
         </div>
 
         {/* Device Canvas Frame */}
-        <div className="flex justify-center items-center">
-          <div className="w-full max-w-[380px] sm:max-w-[410px] bg-[#202124] rounded-[44px] p-3 shadow-2xl border-4 border-[#dadce0] relative">
+        <div className={embedded ? 'relative isolate flex flex-col xl:flex-row justify-center items-center xl:items-center gap-5 xl:gap-6' : 'flex justify-center items-center'}>
+          {embedded && (
+            <>
+              {/* Soft colour glow behind the device */}
+              <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-[70%] w-[80%] -z-10 rounded-full bg-gradient-to-tr from-[#1a73e8]/25 via-[#f29900]/15 to-[#1e8e3e]/25 blur-3xl" />
+
+              {/* Mode switcher: small icon dock (vertical on wide screens, a row above the phone otherwise) */}
+              <div
+                role="tablist"
+                aria-label="Product demos"
+                className="flex xl:flex-col items-center gap-1.5 p-1.5 rounded-2xl bg-white/90 backdrop-blur border border-[#dadce0] shadow-lg"
+              >
+                {([
+                  { id: 'mschool', label: 'MSchool OS', Icon: Smartphone, color: '#1a73e8' },
+                  { id: 'mkids', label: 'mKids Games', Icon: Gamepad2, color: '#f29900' },
+                  { id: 'thermal', label: 'Thermal Slip', Icon: Printer, color: '#1e8e3e' },
+                ] as const).map(({ id, label, Icon, color }) => {
+                  const active = activeTab === id;
+                  return (
+                    <motion.button
+                      key={id}
+                      role="tab"
+                      aria-selected={active}
+                      aria-label={label}
+                      title={label}
+                      onClick={() => setActiveTab(id)}
+                      whileTap={{ scale: 0.88 }}
+                      whileHover={{ y: -1 }}
+                      className={`group relative h-10 xl:w-10 px-3 xl:px-0 rounded-xl inline-flex items-center justify-center gap-1.5 text-xs font-semibold cursor-pointer transition-colors ${
+                        active ? 'text-white' : 'text-[#5f6368] hover:text-[#202124]'
+                      }`}
+                    >
+                      {active && (
+                        <motion.span
+                          layoutId="demo-tab-pill"
+                          className="absolute inset-0 rounded-xl"
+                          style={{ backgroundColor: color, boxShadow: `0 8px 18px -6px ${color}aa` }}
+                          transition={{ type: 'spring', stiffness: 500, damping: 34 }}
+                        />
+                      )}
+                      <motion.span
+                        key={active ? 'on' : 'off'}
+                        initial={active ? { scale: 0.6, rotate: -12 } : false}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 18 }}
+                        className="relative z-10 inline-flex"
+                      >
+                        <Icon className="w-[18px] h-[18px]" />
+                      </motion.span>
+                      <span className="relative z-10 xl:hidden">{label}</span>
+
+                      {/* Hover label (wide screens, where the dock is icon-only) */}
+                      <span className="hidden xl:block pointer-events-none absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-lg bg-[#202124] px-2.5 py-1 text-[11px] font-medium text-white opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-150">
+                        {label}
+                      </span>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </>
+          )}
+          <div className={embedded
+            ? 'w-full max-w-[330px] sm:max-w-[340px] bg-[#111214] rounded-[42px] p-2.5 border-[3px] border-[#3c4043] ring-1 ring-black/10 shadow-[0_30px_60px_-20px_rgba(32,33,36,0.45)] relative'
+            : 'w-full max-w-[380px] sm:max-w-[410px] bg-[#202124] rounded-[44px] p-3 shadow-2xl border-4 border-[#dadce0] relative'}>
             
             {/* Notch */}
-            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-4 bg-slate-900 rounded-b-xl flex items-center justify-center z-30">
+            <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-4 bg-[#111214] rounded-b-xl flex items-center justify-center z-30">
               <div className="w-10 h-1 bg-slate-700 rounded-full" />
             </div>
 
             {/* Screen Viewport */}
-            <div className="relative bg-slate-100 text-slate-900 rounded-[30px] overflow-hidden h-[590px] sm:h-[620px] flex flex-col font-sans select-none border border-slate-200 shadow-inner">
+            <div className="relative bg-slate-100 text-slate-900 rounded-[30px] overflow-hidden h-[clamp(460px,calc(100svh-170px),640px)] flex flex-col font-sans select-none border border-slate-200 shadow-inner">
               
               {/* Status Bar */}
               <div className="bg-slate-900 text-slate-300 px-5 pt-2 pb-1 flex items-center justify-between text-[11px] font-mono shrink-0">
@@ -386,10 +454,10 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
                   {currentScreen === 'home' && (
                     <div className="flex-1 overflow-y-auto p-3 space-y-3 pb-8">
                       {/* Top Horizontal Navigation */}
-                      <div className="flex items-center gap-1.5 border-b border-slate-200 pb-1 text-xs font-bold text-slate-500 overflow-x-auto no-scrollbar">
+                      <div className="flex items-center gap-0.5 border-b border-slate-200 pb-1 text-xs font-bold text-slate-500 overflow-x-auto no-scrollbar">
                         <button
                           onClick={() => setTopSliderTab('words')}
-                          className={`whitespace-nowrap px-2.5 py-1 rounded-md text-xs transition-colors ${
+                          className={`whitespace-nowrap px-1.5 py-1 rounded-md text-[11px] transition-colors ${
                             topSliderTab === 'words' ? 'text-sky-800 bg-sky-50 font-black border-b-2 border-sky-600' : 'hover:text-slate-800'
                           }`}
                         >
@@ -397,7 +465,7 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
                         </button>
                         <button
                           onClick={() => setTopSliderTab('defaulters')}
-                          className={`whitespace-nowrap px-2.5 py-1 rounded-md text-xs transition-colors ${
+                          className={`whitespace-nowrap px-1.5 py-1 rounded-md text-[11px] transition-colors ${
                             topSliderTab === 'defaulters' ? 'text-sky-800 bg-sky-50 font-black border-b-2 border-sky-600' : 'hover:text-slate-800'
                           }`}
                         >
@@ -405,7 +473,7 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
                         </button>
                         <button
                           onClick={() => setTopSliderTab('absentees')}
-                          className={`whitespace-nowrap px-2.5 py-1 rounded-md text-xs transition-colors ${
+                          className={`whitespace-nowrap px-1.5 py-1 rounded-md text-[11px] transition-colors ${
                             topSliderTab === 'absentees' ? 'text-sky-800 bg-sky-50 font-black border-b-2 border-sky-600' : 'hover:text-slate-800'
                           }`}
                         >
@@ -1258,6 +1326,6 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
         </div>
 
       </div>
-    </section>
+    </Wrapper>
   );
 };
