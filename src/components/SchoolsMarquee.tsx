@@ -1,26 +1,7 @@
 import React from 'react';
+import { SCHOOLS } from '../data/schools';
 
-/**
- * "Trusted by" logo slider.
- *
- * Every image in src/assets/schools/ is picked up automatically. The school name is the file name
- * with hyphens turned into spaces, e.g. "The-Standard-School.jpg" -> "The Standard School".
- * To add a school: drop its logo (png/jpg/jpeg/webp/svg, ideally square) into that folder.
- */
-const logoModules = import.meta.glob('../assets/schools/*.{png,jpg,jpeg,webp,svg}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>;
-
-const SCHOOLS = Object.entries(logoModules)
-  .map(([path, src]) => {
-    const file = path.split('/').pop() || '';
-    const name = file.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ').trim();
-    return { name, src };
-  })
-  .sort((a, b) => a.name.localeCompare(b.name));
-
+/** "Trusted by" logo slider. Schools come from src/data/schools.ts (auto-loaded from src/assets/schools). */
 const BADGE_WIDTH_PX = 400; // rough width of one badge incl. margin, used to fill the track
 const SECONDS_PER_BADGE = 6;
 
@@ -60,7 +41,7 @@ export const SchoolsMarquee: React.FC = () => {
       >
         <div className="marquee-track" style={{ animationDuration: `${half.length * SECONDS_PER_BADGE}s` }}>
           {items.map((school, i) => (
-            <SchoolBadge key={`${school.name}-${i}`} name={school.name} src={school.src} />
+            <SchoolBadge key={`${school.name}-${i}`} name={school.name} src={school.logo} />
           ))}
         </div>
       </div>

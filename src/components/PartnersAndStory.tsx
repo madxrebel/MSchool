@@ -13,7 +13,7 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { PARTNER_SCHOOLS } from '../data/mockData';
+import { SCHOOLS } from '../data/schools';
 import { CASE_STUDY_CONTENT } from '../constants';
 
 interface PartnersAndStoryProps {
@@ -159,23 +159,20 @@ export const PartnersAndStory: React.FC<PartnersAndStoryProps> = ({ onOpenBookin
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {PARTNER_SCHOOLS.map((school, i) => (
+          <div className="flex flex-wrap justify-center gap-4">
+            {SCHOOLS.map((school) => (
               <div
-                key={i}
-                className="p-3 rounded-xl bg-[#f8f9fa] border border-[#dadce0] hover:border-[#bdc1c6] transition-colors"
+                key={school.name}
+                className="w-[calc(50%-0.5rem)] sm:w-48 p-4 rounded-2xl bg-[#f8f9fa] border border-[#dadce0] hover:border-[#bdc1c6] hover:shadow-sm transition-all flex flex-col items-center text-center gap-3"
               >
-                <div className="text-xs font-bold text-[#202124] truncate mb-0.5">
-                  {school.name}
-                </div>
-                <div className="text-[11px] text-[#5f6368] flex items-center gap-1 mb-1">
-                  <MapPin className="w-3 h-3 text-[#d93025] shrink-0" />
-                  <span className="truncate">{school.city}</span>
-                </div>
-                <div className="flex justify-between items-center text-[10px] text-[#1a73e8] font-medium pt-1 border-t border-[#dadce0]">
-                  <span>{school.students} Students</span>
-                  <span className="text-[#5f6368]">{school.tenure}</span>
-                </div>
+                <img
+                  src={school.logo}
+                  alt={`${school.name} logo`}
+                  loading="lazy"
+                  draggable={false}
+                  className="w-20 h-20 rounded-2xl object-contain bg-white border border-[#e8eaed] p-0.5"
+                />
+                <div className="text-sm font-bold text-[#202124] leading-snug">{school.name}</div>
               </div>
             ))}
           </div>
