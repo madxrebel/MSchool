@@ -11,7 +11,6 @@ import { PartnersAndStory } from './components/PartnersAndStory';
 import { EcosystemSection } from './components/EcosystemSection';
 import { StrategicDemoCallout } from './components/StrategicDemoCallout';
 import { FAQSection } from './components/FAQSection';
-import { FinalDemoSection } from './components/FinalDemoSection';
 import { BookingModal } from './components/BookingModal';
 import { Footer } from './components/Footer';
 import { 
@@ -121,9 +120,6 @@ export default function App() {
         <FAQSection 
           onOpenBooking={() => setBookingModalOpen(true)}
         />
-
-        {/* Step 14: Final High-Converting Demo Form */}
-        <FinalDemoSection />
       </main>
 
       {/* Footer */}
