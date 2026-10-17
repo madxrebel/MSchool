@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { SchoolsMarquee } from './components/SchoolsMarquee';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
 import { OutcomeSolutions } from './components/OutcomeSolutions';
@@ -80,6 +81,8 @@ export default function App() {
           onNavigateToSimulator={handleNavigateToSimulator}
           simulatorInitialTab={simulatorInitialTab}
         />
+
+        <SchoolsMarquee />
 
         {/* Step 4: Problem Recognition */}
         <ProblemSection 
