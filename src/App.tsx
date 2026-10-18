@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { SchoolsMarquee } from './components/SchoolsMarquee';
+import { ProductsEcosystem } from './components/ProductsEcosystem';
 import { PrincipalStory } from './components/PrincipalStory';
 import { ResultCardsStory } from './components/ResultCardsStory';
 import { ProblemSection } from './components/ProblemSection';
@@ -81,6 +82,8 @@ export default function App() {
         />
 
         <SchoolsMarquee />
+
+        <ProductsEcosystem onOpenBooking={() => setBookingModalOpen(true)} />
 
         <PrincipalStory onOpenBooking={() => setBookingModalOpen(true)} />
 

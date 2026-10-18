@@ -40,16 +40,16 @@ interface SimulatorProps {
   initialTab?: 'mschool' | 'mkids' | 'thermal';
   /** Render only the tabs + phone (no section chrome/heading), for use inside the Hero. */
   embedded?: boolean;
+  /** Show only this demo and hide the switcher dock (e.g. inside a single product panel). */
+  lockedTab?: 'mschool' | 'mkids' | 'thermal';
 }
 
-export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTab = 'mschool', embedded = false }) => {
-  const [activeTab, setActiveTab] = useState<'mschool' | 'mkids' | 'thermal'>(initialTab);
+export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTab = 'mschool', embedded = false, lockedTab }) => {
+  const [activeTab, setActiveTab] = useState<'mschool' | 'mkids' | 'thermal'>(lockedTab ?? initialTab);
 
   useEffect(() => {
-    if (initialTab) {
-      setActiveTab(initialTab);
-    }
-  }, [initialTab]);
+    setActiveTab(lockedTab ?? initialTab);
+  }, [initialTab, lockedTab]);
 
   // MSCHOOL STATE
   const [currentScreen, setCurrentScreen] = useState<'home' | 'fee' | 'attendance' | 'diary' | 'search' | 'reminder'>('home');
@@ -332,6 +332,7 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
               <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-[70%] w-[80%] -z-10 rounded-full bg-gradient-to-tr from-[#1a73e8]/25 via-[#f29900]/15 to-[#1e8e3e]/25 blur-3xl" />
 
               {/* Mode switcher: small icon dock (vertical on wide screens, a row above the phone otherwise) */}
+              {!lockedTab && (
               <div
                 role="tablist"
                 aria-label="Product demos"
@@ -384,6 +385,7 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
                   );
                 })}
               </div>
+              )}
             </>
           )}
           <div className={embedded
