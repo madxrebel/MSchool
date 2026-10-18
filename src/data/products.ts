@@ -1,4 +1,4 @@
-import { Gamepad2, MonitorPlay } from 'lucide-react';
+import { Gamepad2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { PLAY_STORE_PRODUCTS } from './playStore';
 
@@ -7,7 +7,7 @@ import { PLAY_STORE_PRODUCTS } from './playStore';
  * Facts for MSchool and MStudent come from their Google Play listings (see playStore.ts).
  * Do not add numbers that cannot be proven.
  */
-export type ProductStatus = 'live' | 'preview' | 'soon';
+export type ProductStatus = 'live' | 'preview';
 
 export interface ProductScreen {
   src: string;
@@ -21,7 +21,7 @@ export interface Product {
   status: ProductStatus;
   color: string;
   description: string;
-  platforms: ('Android' | 'Web' | 'Tablet' | 'Chromebook')[];
+  platforms: ('Android' | 'Web' | 'Tablet')[];
   stats: [value: string, label: string][];
   includesTitle: string;
   includes: string[];
@@ -31,7 +31,7 @@ export interface Product {
   Icon?: LucideIcon;
   playStoreUrl?: string;
   screens?: ProductScreen[];
-  demo: 'screens' | 'games' | 'soon';
+  demo: 'screens' | 'games';
 }
 
 const assetModules = import.meta.glob('../assets/products/*/*.{png,jpg,jpeg,webp}', {
@@ -116,20 +116,5 @@ export const PRODUCTS: Product[] = [
     includes: ['Math Race', 'Letter Trace', 'Balloons'],
     Icon: Gamepad2,
     demo: 'games',
-  },
-  {
-    id: 'digital-learning',
-    name: 'Digital Learning Platform',
-    subtitle: 'Daily learning on tablets',
-    status: 'soon',
-    color: '#9334e6',
-    description:
-      'A learning platform that connects with Android tablets and Chromebooks, so students can learn something new every day through videos and lessons.',
-    platforms: ['Tablet', 'Chromebook'],
-    stats: [],
-    includesTitle: 'Planned for the platform',
-    includes: ['Video lessons', 'Daily learning', 'Android tablets', 'Chromebooks'],
-    Icon: MonitorPlay,
-    demo: 'soon',
   },
 ];

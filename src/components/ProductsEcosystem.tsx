@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowRight, Check, ChevronRight, Globe, Laptop, Smartphone, Tablet, PlayCircle } from 'lucide-react';
+import { ArrowRight, Check, ChevronRight, Globe, Smartphone, Tablet, PlayCircle } from 'lucide-react';
 import { useInView, useReducedMotion } from 'motion/react';
 import { PRODUCTS, type Product, type ProductStatus } from '../data/products';
 import { InteractiveDeviceSimulator } from './InteractiveDeviceSimulator';
@@ -11,10 +11,9 @@ interface ProductsEcosystemProps {
 const STATUS: Record<ProductStatus, { label: string; dot: string; chip: string }> = {
   live: { label: 'Live on Google Play', dot: '#1e8e3e', chip: 'bg-[#e6f4ea] text-[#137333]' },
   preview: { label: 'Preview', dot: '#f29900', chip: 'bg-[#fef7e0] text-[#b06000]' },
-  soon: { label: 'Coming soon', dot: '#80868b', chip: 'bg-[#f1f3f4] text-[#5f6368]' },
 };
 
-const PLATFORM_ICON = { Android: Smartphone, Web: Globe, Tablet: Tablet, Chromebook: Laptop } as const;
+const PLATFORM_ICON = { Android: Smartphone, Web: Globe, Tablet: Tablet } as const;
 
 const ProductIcon: React.FC<{ product: Product; size?: string; active?: boolean }> = ({ product, size = 'w-12 h-12', active }) => {
   if (product.iconSrc) {
@@ -100,37 +99,6 @@ const ScreenExplorer: React.FC<{ product: Product }> = ({ product }) => {
     </div>
   );
 };
-
-const SoonPanel: React.FC<{ product: Product; onOpenBooking: () => void }> = ({ product, onOpenBooking }) => (
-  <div className="rounded-3xl border border-dashed border-[#dadce0] bg-[#f8f9fa] p-6 sm:p-10 flex flex-col items-center text-center">
-    <div className="relative w-full max-w-sm">
-      <div className="mx-auto w-full aspect-[16/10] rounded-2xl bg-[#202124] p-2.5 shadow-xl">
-        <div className="w-full h-full rounded-lg bg-[#2b2d31] grid grid-cols-[1fr_1.4fr] gap-2 p-2.5">
-          <div className="space-y-2">
-            {[0, 1, 2, 3].map((r) => (
-              <div key={r} className="h-5 rounded bg-white/10" />
-            ))}
-          </div>
-          <div className="rounded-md bg-white/10 flex items-center justify-center">
-            <PlayCircle className="w-10 h-10" style={{ color: product.color }} />
-          </div>
-        </div>
-      </div>
-      <div className="mx-auto h-2 w-1/2 rounded-b-xl bg-[#3c4043]" />
-    </div>
-    <p className="mt-6 text-sm font-bold text-[#202124]">Screens are on the way</p>
-    <p className="mt-1 text-sm text-[#5f6368] max-w-sm">
-      The platform is being prepared. Tell us you are interested and we will show it to you first.
-    </p>
-    <button
-      onClick={onOpenBooking}
-      className="mt-5 h-10 px-5 rounded-full text-xs font-semibold text-white inline-flex items-center gap-1.5 cursor-pointer transition-opacity hover:opacity-90"
-      style={{ backgroundColor: product.color }}
-    >
-      Ask about it <ChevronRight className="w-3.5 h-3.5" />
-    </button>
-  </div>
-);
 
 export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBooking }) => {
   const chapterRefs = useRef<(HTMLElement | null)[]>([]);
@@ -248,7 +216,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                 <div className="h-1 rounded-full bg-[#e8eaed] overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
-                    style={{ width: `${((active + 1) / N) * 100}%`, backgroundColor: PRODUCTS[active].color }}
+                    style={{ width: `${((active + 1) / N) * 100}%`, backgroundColor: PRODUCTS[Math.min(active, N - 1)].color }}
                   />
                 </div>
               </div>
@@ -352,7 +320,6 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                         <InteractiveDeviceSimulator embedded lockedTab="mkids" />
                       </div>
                     )}
-                    {p.demo === 'soon' && <SoonPanel product={p} onOpenBooking={onOpenBooking} />}
                   </div>
 
                   <div className="mt-10">
