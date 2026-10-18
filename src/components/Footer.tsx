@@ -21,7 +21,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
               <span className="w-10 h-10 rounded-xl bg-white/10 text-[#8ab4f8] flex items-center justify-center">
                 <GraduationCap className="w-5 h-5" />
               </span>
-              <span className="text-2xl font-extrabold tracking-tight">{BRAND_CONFIG.name}</span>
+              <span className="leading-none">
+                <span className="block text-2xl font-extrabold tracking-tight">{BRAND_CONFIG.name}</span>
+                <span className="block mt-1.5 text-[10px] font-semibold uppercase tracking-[0.55em] text-white/50">Pakistan</span>
+              </span>
             </div>
             <p className="mt-6 text-lg leading-snug text-white/50">
               We turn everyday school work into one simple system, built by school owners who run schools themselves.
@@ -68,31 +71,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
           </div>
         </div>
 
-        {/* Embossed wordmark: an SVG so it always spans the full width exactly */}
+        {/* Embossed wordmark: an SVG so it always spans the full width exactly.
+            MSCHOOL is large; PAKISTAN is smaller, on the same baseline. */}
         <svg
-          viewBox="0 0 800 150"
+          viewBox="0 0 1000 150"
           className="w-full mt-16 sm:mt-20 select-none"
           style={{ filter: 'drop-shadow(0 -1px 0 rgba(255,255,255,0.07)) drop-shadow(0 3px 3px rgba(0,0,0,0.75))' }}
           role="img"
-          aria-label="MSchool"
+          aria-label="MSchool Pakistan"
         >
-          <text
-            x="0"
-            y="132"
-            textLength="800"
-            lengthAdjust="spacingAndGlyphs"
-            fontSize="168"
-            fontWeight="800"
-            fill="#25272b"
-            style={{ fontFamily: 'var(--font-sans)' }}
-          >
-            MSCHOOL
-          </text>
+          <g fill="#25272b" style={{ fontFamily: 'var(--font-sans)' }} fontWeight="800">
+            <text x="0" y="132" textLength="640" lengthAdjust="spacingAndGlyphs" fontSize="168">
+              MSCHOOL
+            </text>
+            <text x="676" y="132" textLength="324" lengthAdjust="spacingAndGlyphs" fontSize="74">
+              PAKISTAN
+            </text>
+          </g>
         </svg>
 
         {/* Bottom bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-white/45">
-          <span>{new Date().getFullYear()} © MSchool</span>
+          <span>{new Date().getFullYear()} © MSchool Pakistan</span>
           <span>Built by school owners since 2000</span>
         </div>
       </div>
