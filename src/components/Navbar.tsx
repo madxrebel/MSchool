@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ChevronRight, LogIn } from 'lucide-react';
 import { CTA_TEXTS, PORTAL_URL } from '../constants';
 import logo from '../assets/brand/logo.png';
-import logoWhite from '../assets/brand/logo-white.png';
 import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
@@ -38,14 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             src={logo}
             alt="MSchool Pakistan"
             draggable={false}
-            className="logo-on-light h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
-          />
-          <img
-            src={logoWhite}
-            alt=""
-            aria-hidden
-            draggable={false}
-            className="logo-on-dark h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
+            className="h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
           />
         </a>
 

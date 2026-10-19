@@ -108,12 +108,6 @@ html {
 /* Product text colours: darker in the soft light theme, lighter in the dark theme */
 :root { --ink-mschool: #1557b0; --ink-mstudent: #137333; --ink-mkids: #8f4e00; }
 html[data-theme="dark"] { --ink-mschool: #8ab4f8; --ink-mstudent: #81c995; --ink-mkids: #fdd663; }
-
-/* Navbar logo: the dark-blue logo on light, the white logo on dark */
-.logo-on-dark { display: none; }
-html[data-theme="dark"] .logo-on-light { display: none; }
-html[data-theme="dark"] .logo-on-dark { display: block; }
-
 /* Drifting colour orbs behind the "Your school is next" section */
 @keyframes orb-drift-a {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
