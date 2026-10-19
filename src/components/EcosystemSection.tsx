@@ -72,7 +72,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = () => {
 
               <div className="mt-5 pt-4 border-t border-[#e8eaed] flex flex-wrap items-center gap-x-4 gap-y-2">
                 <a
-                  href={`#product-${p.id}`}
+                  href={`#/${p.id}`}
                   className="text-sm font-semibold inline-flex items-center gap-1 group"
                   style={{ color: p.ink }}
                 >
