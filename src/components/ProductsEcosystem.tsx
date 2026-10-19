@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, ChevronRight, Globe, Smartphone, Tablet, PlayCircle } from 'lucide-react';
 import { useInView, useReducedMotion } from 'motion/react';
 import { PRODUCTS, type Product, type ProductStatus } from '../data/products';
-import { InteractiveDeviceSimulator } from './InteractiveDeviceSimulator';
 
 interface ProductsEcosystemProps {
   onOpenBooking: () => void;
@@ -47,6 +46,68 @@ const ScreenExplorer: React.FC<{ product: Product }> = ({ product }) => {
 
   if (screens.length === 0) return null;
 
+  const landscape = product.screenShape === 'landscape';
+
+  const captions = (
+    <ol className={landscape ? 'grid grid-cols-1 sm:grid-cols-2 gap-1.5' : 'space-y-1.5'} aria-label={`${product.name} screens`}>
+      {screens.map((s, i) => {
+        const active = i === idx;
+        return (
+          <li key={s.src}>
+            <button
+              onClick={() => {
+                setIdx(i);
+                setAuto(false);
+              }}
+              aria-current={active}
+              className={`w-full text-left flex items-start gap-3 px-3.5 py-3 rounded-2xl border transition-all cursor-pointer ${
+                active ? 'bg-white shadow-sm' : 'border-transparent hover:bg-[#f8f9fa]'
+              }`}
+              style={active ? { borderColor: `${product.color}55` } : undefined}
+            >
+              <span
+                className="mt-0.5 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center shrink-0 transition-colors"
+                style={active ? { backgroundColor: product.color, color: '#fff' } : { backgroundColor: '#f1f3f4', color: '#5f6368' }}
+              >
+                {i + 1}
+              </span>
+              <span className={`text-sm leading-snug ${active ? 'font-semibold text-[#202124]' : 'text-[#5f6368]'}`}>{s.caption}</span>
+            </button>
+          </li>
+        );
+      })}
+    </ol>
+  );
+
+  const stack = screens.map((s, i) => (
+    <img
+      key={s.src}
+      src={s.src}
+      alt={s.caption}
+      draggable={false}
+      loading={i === 0 ? 'eager' : 'lazy'}
+      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${i === idx ? 'opacity-100' : 'opacity-0'}`}
+    />
+  ));
+
+  if (landscape) {
+    // Horizontal (tablet-style) frame, captions underneath
+    return (
+      <div ref={ref} className="space-y-6">
+        <div className="relative mx-auto w-full max-w-2xl">
+          <div
+            className="absolute -inset-6 -z-10 rounded-full blur-3xl opacity-25"
+            style={{ background: `radial-gradient(circle, ${product.color}, transparent 70%)` }}
+          />
+          <div className="rounded-[26px] bg-[#111214] p-2 sm:p-3 shadow-2xl ring-1 ring-black/10">
+            <div className="relative aspect-[1100/484] rounded-[16px] overflow-hidden bg-[#f1f3f4]">{stack}</div>
+          </div>
+        </div>
+        {captions}
+      </div>
+    );
+  }
+
   return (
     <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[minmax(0,260px)_1fr] gap-6 sm:gap-8 items-center">
       <div className="relative mx-auto w-full max-w-[250px] sm:max-w-none">
@@ -54,48 +115,9 @@ const ScreenExplorer: React.FC<{ product: Product }> = ({ product }) => {
           className="absolute -inset-6 -z-10 rounded-full blur-3xl opacity-25"
           style={{ background: `radial-gradient(circle, ${product.color}, transparent 70%)` }}
         />
-        <div className="relative aspect-[9/16] rounded-[28px] overflow-hidden shadow-2xl border border-black/10 bg-[#f1f3f4]">
-          {screens.map((s, i) => (
-            <img
-              key={s.src}
-              src={s.src}
-              alt={s.caption}
-              draggable={false}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${i === idx ? 'opacity-100' : 'opacity-0'}`}
-            />
-          ))}
-        </div>
+        <div className="relative aspect-[9/16] rounded-[28px] overflow-hidden shadow-2xl border border-black/10 bg-[#f1f3f4]">{stack}</div>
       </div>
-
-      <ol className="space-y-1.5" aria-label={`${product.name} screens`}>
-        {screens.map((s, i) => {
-          const active = i === idx;
-          return (
-            <li key={s.src}>
-              <button
-                onClick={() => {
-                  setIdx(i);
-                  setAuto(false);
-                }}
-                aria-current={active}
-                className={`w-full text-left flex items-start gap-3 px-3.5 py-3 rounded-2xl border transition-all cursor-pointer ${
-                  active ? 'bg-white shadow-sm' : 'border-transparent hover:bg-[#f8f9fa]'
-                }`}
-                style={active ? { borderColor: `${product.color}55` } : undefined}
-              >
-                <span
-                  className="mt-0.5 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center shrink-0 transition-colors"
-                  style={active ? { backgroundColor: product.color, color: '#fff' } : { backgroundColor: '#f1f3f4', color: '#5f6368' }}
-                >
-                  {i + 1}
-                </span>
-                <span className={`text-sm leading-snug ${active ? 'font-semibold text-[#202124]' : 'text-[#5f6368]'}`}>{s.caption}</span>
-              </button>
-            </li>
-          );
-        })}
-      </ol>
+      {captions}
     </div>
   );
 };
@@ -315,11 +337,6 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                   {/* The interactive part */}
                   <div className="mt-10 rounded-3xl bg-[#f8f9fa] border border-[#e8eaed] p-5 sm:p-8">
                     {p.demo === 'screens' && <ScreenExplorer product={p} />}
-                    {p.demo === 'games' && (
-                      <div className="max-w-[360px] mx-auto">
-                        <InteractiveDeviceSimulator embedded lockedTab="mkids" />
-                      </div>
-                    )}
                   </div>
 
                   <div className="mt-10">

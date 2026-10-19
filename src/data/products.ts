@@ -1,4 +1,3 @@
-import { Gamepad2 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { PLAY_STORE_PRODUCTS } from './playStore';
 
@@ -31,7 +30,9 @@ export interface Product {
   Icon?: LucideIcon;
   playStoreUrl?: string;
   screens?: ProductScreen[];
-  demo: 'screens' | 'games';
+  /** MKids runs in landscape; the MSchool and MStudent store screenshots are portrait. */
+  screenShape?: 'portrait' | 'landscape';
+  demo: 'screens';
 }
 
 const assetModules = import.meta.glob('../assets/products/*/*.{png,jpg,jpeg,webp}', {
@@ -109,12 +110,41 @@ export const PRODUCTS: Product[] = [
     status: 'preview',
     color: '#f29900',
     description:
-      'The digital version of our Dreams Publishing books. Young learners play, practise and learn with touch games. Try the preview below.',
-    platforms: ['Android', 'Tablet'],
-    stats: [['3', 'Games in the preview']],
-    includesTitle: 'In the preview',
-    includes: ['Math Race', 'Letter Trace', 'Balloons'],
-    Icon: Gamepad2,
-    demo: 'games',
+      'The digital version of our Dreams Publishing books for Nursery, KG-1 and KG-2. Children learn English, Urdu and Math through touch games, and can type or scan a page number from the book to jump straight to it.',
+    platforms: ['Android'],
+    stats: [
+      ['3', 'Classes'],
+      ['3', 'Play modes'],
+      ['4', 'Subjects'],
+    ],
+    includesTitle: "What's inside",
+    includes: [
+      'Nursery, KG-1 and KG-2',
+      'English, Urdu and Math',
+      'General Knowledge',
+      'Chapter Mode',
+      'Random Play',
+      'Arcade Mix',
+      'Learning Space and Games Zone',
+      'Voice and Scan QR',
+      'Stars and points',
+    ],
+    iconSrc: asset('mkids', 'icon.png'),
+    screenShape: 'landscape',
+    screens: [
+      { src: asset('mkids', 'screen-1.jpg'), caption: 'Pick the class: Nursery, KG-1 or KG-2' },
+      { src: asset('mkids', 'screen-2.jpg'), caption: 'Each class has its subjects: English, Urdu, Math and General Knowledge' },
+      { src: asset('mkids', 'screen-3.jpg'), caption: 'Type or scan the page number from the book to open that lesson' },
+      { src: asset('mkids', 'screen-4.jpg'), caption: 'Choose how to play: Chapter Mode, Random Play or Arcade Mix' },
+      { src: asset('mkids', 'screen-5.jpg'), caption: 'English units with pictures, words and voice' },
+      { src: asset('mkids', 'screen-6.jpg'), caption: 'Match the words to the numbers' },
+      { src: asset('mkids', 'screen-7.jpg'), caption: 'Draw a line to connect each matching pair' },
+      { src: asset('mkids', 'screen-8.jpg'), caption: 'Trace the number with a finger' },
+      { src: asset('mkids', 'screen-9.jpg'), caption: 'Find the missing half of the puzzle piece' },
+      { src: asset('mkids', 'screen-10.jpg'), caption: 'Choose the correct Urdu letter for the picture' },
+      { src: asset('mkids', 'screen-11.jpg'), caption: 'Join Urdu letters to make words, then read them' },
+      { src: asset('mkids', 'screen-12.jpg'), caption: 'Read Urdu words' },
+    ],
+    demo: 'screens',
   },
 ];
