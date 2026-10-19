@@ -1,5 +1,5 @@
 import React from 'react';
-import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL } from '../constants';
+import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL, SOCIAL_LINKS } from '../constants';
 import logo from '../assets/brand/logo.png';
 import logoEmboss from '../assets/brand/logo-emboss.png';
 
@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
           </div>
 
           {/* Link columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-10 lg:gap-x-16">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-10 gap-y-10 lg:gap-x-12">
             <div>
               <div className={COLUMN_HEADING}>Menu</div>
               <ul className="space-y-3">
@@ -39,7 +39,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             <div>
               <div className={COLUMN_HEADING}>Contact</div>
               <ul className="space-y-3">
-                <li><a href="tel:03358009786" className={LINK}>{BRAND_CONFIG.supportPhoneDisplay}</a></li>
+                <li><a href={`tel:${BRAND_CONFIG.supportPhoneTel}`} className={LINK}>{BRAND_CONFIG.supportPhoneDisplay}</a></li>
                 <li>
                   <a href={BRAND_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className={LINK}>
                     WhatsApp
@@ -47,6 +47,35 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                 </li>
               </ul>
             </div>
+
+            {Object.values(SOCIAL_LINKS).some(Boolean) && (
+              <div>
+                <div className={COLUMN_HEADING}>Social</div>
+                <ul className="space-y-3">
+                  {SOCIAL_LINKS.instagram && (
+                    <li>
+                      <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className={LINK}>
+                        Instagram
+                      </a>
+                    </li>
+                  )}
+                  {SOCIAL_LINKS.tiktok && (
+                    <li>
+                      <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer" className={LINK}>
+                        TikTok
+                      </a>
+                    </li>
+                  )}
+                  {SOCIAL_LINKS.facebook && (
+                    <li>
+                      <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className={LINK}>
+                        Facebook
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
 
             <div>
               <div className={COLUMN_HEADING}>Account</div>

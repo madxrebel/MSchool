@@ -1264,7 +1264,7 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
                     <div className="text-center border-b border-dashed border-slate-400 pb-2">
                       <div className="font-bold text-xs uppercase tracking-wider">MSCHOOL ACADEMY</div>
                       <div className="text-[10px]">MAIN CAMPUS • PAKISTAN</div>
-                      <div className="text-[9px] text-slate-500">TEL: 0335-8009786</div>
+                      <div className="text-[9px] text-slate-500">TEL: 0304-2130798</div>
                       <div className="font-bold mt-1 text-[10px]">OFFICIAL FEE RECEIPT</div>
                     </div>
 

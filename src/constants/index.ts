@@ -24,7 +24,7 @@ export const CTA_TEXTS = {
   SUBMIT_DEMO: 'Request a Free Walkthrough',
   SUBMITTING: 'Arranging Walkthrough...',
   DONE: 'Walkthrough Arranged',
-  WHATSAPP_LINK: 'https://wa.me/923358009786',
+  WHATSAPP_LINK: 'https://wa.me/923042130798',
 
   // Low-risk guarantees & reassurance chips
   LOW_RISK_MICROCOPY: '15-minute walkthrough • Zero sales pressure • See it running with your fee structure',
@@ -69,12 +69,21 @@ export const BRAND_CONFIG = {
   name: 'MSchool',
   badge: 'Pakistan',
   tagline: 'School Management System Built for Schools in Pakistan',
-  supportPhone: '0335-8009786',
-  supportPhoneDisplay: '0335-8009786',
+  supportPhone: '0304-2130798',
+  supportPhoneDisplay: '0304-2130798',
+  supportPhoneTel: '+923042130798', // for tel: links
   supportEmail: 'inquiries@mschoolecosystem.com',
-  whatsappUrl: 'https://wa.me/923358009786',
+  whatsappUrl: 'https://wa.me/923042130798',
   trustClaim: 'partner schools that run on MSchool every day',
   pilotDuration: 'Free Walkthrough',
+} as const;
+
+/** MSchool's public social pages. Leave a value empty to hide that link. */
+export const SOCIAL_LINKS = {
+  instagram: 'https://www.instagram.com/mschool_by_tmh/',
+  tiktok: 'https://www.tiktok.com/@mschool20',
+  // Add the public Facebook page address here (not the "professional_dashboard" admin link)
+  facebook: '',
 } as const;
 
 export const NAV_ITEMS = [

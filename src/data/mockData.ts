@@ -149,7 +149,7 @@ export const INITIAL_STAFF: StaffMember[] = [
     name: 'Wali Khan',
     fatherOrHusbandName: 'Ahmed Ali',
     role: 'Principal',
-    phone: '03358009786',
+    phone: '0300-1234567',
     attendanceToday: 'PRESENT',
     baseSalary: 75000,
   },
