@@ -106,11 +106,11 @@ export const PRODUCTS: Product[] = [
   {
     id: 'mkids',
     name: 'MKids',
-    subtitle: 'Interactive learning for kids',
+    subtitle: 'The ebook of Dreamz books',
     status: 'preview',
     color: '#f29900',
     description:
-      'The digital version of our Dreams Publishing books for Nursery, KG-1 and KG-2. Children learn English, Urdu and Math through touch games, and can type or scan a page number from the book to jump straight to it.',
+      'MKids is the digital version of the Dreamz Publications Pre-Primary books for Nursery, KG-1 and KG-2. Every page comes alive: children play, trace and match, and can type or scan a page number from the book to jump straight to it.',
     platforms: ['Android'],
     stats: [
       ['3', 'Classes'],

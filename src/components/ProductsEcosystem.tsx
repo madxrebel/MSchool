@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check, ChevronRight, Globe, Smartphone, Tablet, PlayCircle } from 'lucide-react';
 import { useInView, useReducedMotion } from 'motion/react';
 import { PRODUCTS, type Product, type ProductStatus } from '../data/products';
+import { DreamzBridge } from './DreamzBridge';
 
 interface ProductsEcosystemProps {
   onOpenBooking: () => void;
@@ -333,6 +334,8 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                       <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
+
+                  {p.id === 'mkids' && p.screens && <DreamzBridge color={p.color} appIcon={p.iconSrc} screens={p.screens} />}
 
                   {/* The interactive part */}
                   <div className="mt-10 rounded-3xl bg-[#f8f9fa] border border-[#e8eaed] p-5 sm:p-8">
