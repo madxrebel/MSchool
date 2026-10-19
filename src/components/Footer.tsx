@@ -1,6 +1,7 @@
 import React from 'react';
 import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL } from '../constants';
 import logoWhite from '../assets/brand/logo-white.png';
+import logoEmboss from '../assets/brand/logo-emboss.png';
 
 interface FooterProps {
   onOpenBooking?: () => void;
@@ -63,24 +64,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
           </div>
         </div>
 
-        {/* Embossed wordmark: an SVG so it always spans the full width exactly.
-            MSCHOOL is large; PAKISTAN is smaller, on the same baseline. */}
-        <svg
-          viewBox="0 0 1000 150"
-          className="w-full mt-16 sm:mt-20 select-none"
-          style={{ filter: 'drop-shadow(0 -1px 0 rgba(255,255,255,0.07)) drop-shadow(0 3px 3px rgba(0,0,0,0.75))' }}
-          role="img"
-          aria-label="MSchool Pakistan"
-        >
-          <g fill="#25272b" style={{ fontFamily: 'var(--font-sans)' }} fontWeight="800">
-            <text x="0" y="132" textLength="640" lengthAdjust="spacingAndGlyphs" fontSize="168">
-              MSCHOOL
-            </text>
-            <text x="676" y="132" textLength="324" lengthAdjust="spacingAndGlyphs" fontSize="74">
-              PAKISTAN
-            </text>
-          </g>
-        </svg>
+        {/* The real logo, large and embossed into the footer (tonal, brand-tinted) */}
+        <img
+          src={logoEmboss}
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="mx-auto mt-14 sm:mt-16 w-full max-w-[560px] select-none pointer-events-none"
+          style={{ filter: 'drop-shadow(0 -1px 0 rgba(255,255,255,0.09)) drop-shadow(0 4px 4px rgba(0,0,0,0.8))' }}
+        />
 
         {/* Bottom bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-white/45">
