@@ -1,6 +1,6 @@
 import React from 'react';
 import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL } from '../constants';
-import logoWhite from '../assets/brand/logo-white.png';
+import logo from '../assets/brand/logo.png';
 import logoEmboss from '../assets/brand/logo-emboss.png';
 
 interface FooterProps {
@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
         <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
           {/* Brand */}
           <div className="max-w-xs">
-            <img src={logoWhite} alt="MSchool Pakistan" draggable={false} className="h-20 sm:h-24 w-auto" />
+            <img src={logo} alt="MSchool Pakistan" draggable={false} className="h-20 sm:h-24 w-auto" />
             <p className="mt-6 text-lg leading-snug text-white/50">
               We turn everyday school work into one simple system, built by school owners who run schools themselves.
             </p>
