@@ -4,6 +4,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import confetti from 'canvas-confetti';
 import { CTA_TEXTS, DEMO_FORM_CONFIG, BRAND_CONFIG } from '../constants';
+import { buildLeadWhatsAppUrl } from '../lib/whatsappLead';
 
 interface PilotRequestFormProps {
   source?: string;
@@ -11,6 +12,8 @@ interface PilotRequestFormProps {
   onClose?: () => void;
   isModal?: boolean;
 }
+
+const SAVE_TIMEOUT_MS = 6000;
 
 export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
   source = 'Free Demo Form',
@@ -25,6 +28,10 @@ export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  // After submit: did the request reach our database, did WhatsApp open, and the link to (re)open it
+  const [saved, setSaved] = useState<boolean | null>(null);
+  const [waOpened, setWaOpened] = useState(false);
+  const [waUrl, setWaUrl] = useState<string>(BRAND_CONFIG.whatsappUrl);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -56,13 +63,33 @@ export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
       source,
     };
 
+    // 1) Open WhatsApp with the details already typed in. This must happen right here, inside the
+    //    click, or the browser blocks it. The visitor only has to press Send.
+    const url = buildLeadWhatsAppUrl({
+      name: inquiryData.name,
+      schoolName: inquiryData.schoolName,
+      phone: inquiryData.phone,
+      studentCount: inquiryData.studentCount,
+      notes: inquiryData.notes,
+      source,
+    });
+    const win = window.open(url, '_blank');
+    if (win) win.opener = null;
+    setWaUrl(url);
+    setWaOpened(!!win);
+    confetti({ particleCount: 65, spread: 70 });
+
+    // 2) Save a copy in the database as a backup, and tell the truth about whether that worked.
+    let didSave = false;
     try {
-      await addDoc(collection(db, 'schoolInquiries'), inquiryData);
-      setSubmitted(true);
-      confetti({ particleCount: 65, spread: 70 });
-      if (onSuccess) onSuccess();
+      // Firestore waits forever when the visitor is offline, so give the save a few seconds at most
+      await Promise.race([
+        addDoc(collection(db, 'schoolInquiries'), inquiryData),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('save timed out')), SAVE_TIMEOUT_MS)),
+      ]);
+      didSave = true;
     } catch (err: any) {
-      console.warn('Firebase submission error, persisting locally:', err);
+      console.warn('Firebase submission error, keeping a copy on this device:', err);
       try {
         const stored = JSON.parse(localStorage.getItem('mschool_pilot_requests') || '[]');
         stored.push(inquiryData);
@@ -70,16 +97,17 @@ export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
       } catch (storageErr) {
         // ignore storage errors
       }
-      setSubmitted(true);
-      confetti({ particleCount: 65, spread: 70 });
-      if (onSuccess) onSuccess();
-    } finally {
-      setIsSubmitting(false);
     }
+    setSaved(didSave);
+    setSubmitted(true);
+    if (onSuccess) onSuccess();
+    setIsSubmitting(false);
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setSaved(null);
+    setWaOpened(false);
     setName('');
     setSchoolName('');
     setPhone('');
@@ -89,46 +117,49 @@ export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
 
   if (submitted) {
     return (
-      <div className="p-8 rounded-2xl bg-[#f8fafd] text-center space-y-3.5 border border-[#d2e3fc] animate-in zoom-in-95">
+      <div className="p-6 sm:p-8 rounded-2xl bg-[#f8fafd] text-center space-y-3.5 border border-[#d2e3fc] animate-in zoom-in-95">
         <div className="w-12 h-12 rounded-full bg-[#e6f4ea] text-[#137333] flex items-center justify-center mx-auto shadow-xs">
-          <CheckCircle2 className="w-7 h-7" />
+          <MessageSquare className="w-6 h-6" />
         </div>
-        <h3 className="text-xl font-bold text-[#202124]">
-          Walkthrough Request Received
-        </h3>
+        <h3 className="text-xl font-bold text-[#202124]">One last step: send it on WhatsApp</h3>
         <p className="text-xs sm:text-sm text-[#5f6368] max-w-md mx-auto leading-relaxed">
-          Thank you, <strong>{name}</strong>! We have received your request for <strong>{schoolName}</strong>. 
-          Our team will reach out directly via WhatsApp at <strong>{phone}</strong> to coordinate a convenient time for your campus walkthrough.
+          Thank you, <strong>{name}</strong>!{' '}
+          {waOpened
+            ? 'WhatsApp should have opened with your details already typed in. Just tap Send and your request reaches us instantly.'
+            : 'Tap the green button below. WhatsApp opens with your details already typed in. Just tap Send.'}
         </p>
 
-        <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="h-12 px-6 rounded-full bg-[#1e8e3e] hover:bg-[#188038] text-white font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition-colors"
+        >
+          <MessageSquare className="w-4 h-4" />
+          <span>{waOpened ? 'Open WhatsApp again' : 'Send on WhatsApp'}</span>
+        </a>
+
+        <p className="text-[11px] text-[#5f6368] max-w-md mx-auto leading-relaxed">
+          {saved ? (
+            <>
+              <CheckCircle2 className="inline w-3.5 h-3.5 text-[#137333] -mt-0.5 mr-1" />
+              Your request for <strong>{schoolName}</strong> is also saved with us. We will contact you on <strong>{phone}</strong>.
+            </>
+          ) : (
+            <>Your request is not complete until you send the WhatsApp message, so please do not skip this step.</>
+          )}
+        </p>
+
+        <div className="pt-1 flex items-center justify-center">
           {onClose ? (
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-6 py-2 bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold rounded-full text-xs cursor-pointer shadow-xs transition-colors"
-            >
+            <button type="button" onClick={onClose} className="text-xs font-semibold text-[#5f6368] hover:text-[#202124] hover:underline cursor-pointer py-1">
               Close
             </button>
           ) : (
-            <button
-              type="button"
-              onClick={handleReset}
-              className="text-xs font-semibold text-[#1a73e8] hover:underline cursor-pointer py-1"
-            >
+            <button type="button" onClick={handleReset} className="text-xs font-semibold text-[#1a73e8] hover:underline cursor-pointer py-1">
               Submit another inquiry
             </button>
           )}
-
-          <a
-            href={BRAND_CONFIG.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs font-semibold text-[#1e8e3e] hover:underline inline-flex items-center gap-1"
-          >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Chat on WhatsApp directly</span>
-          </a>
         </div>
       </div>
     );
@@ -232,6 +263,12 @@ export const PilotRequestForm: React.FC<PilotRequestFormProps> = ({
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
+
+      {/* Heads-up about the WhatsApp step */}
+      <p className="text-[11px] text-[#5f6368] text-center pt-1 flex items-center justify-center gap-1.5">
+        <MessageSquare className="w-3.5 h-3.5 text-[#1e8e3e] shrink-0" />
+        <span>Next, WhatsApp opens with your details typed in. Tap Send to finish.</span>
+      </p>
 
       {/* Reassurance text */}
       <p className="text-[11px] text-[#5f6368] text-center pt-1">
