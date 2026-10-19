@@ -1,6 +1,6 @@
 import React from 'react';
-import { GraduationCap } from 'lucide-react';
 import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL } from '../constants';
+import logoWhite from '../assets/brand/logo-white.png';
 
 interface FooterProps {
   onOpenBooking?: () => void;
@@ -17,15 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
         <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
           {/* Brand */}
           <div className="max-w-xs">
-            <div className="flex items-center gap-2.5">
-              <span className="w-10 h-10 rounded-xl bg-white/10 text-[#8ab4f8] flex items-center justify-center">
-                <GraduationCap className="w-5 h-5" />
-              </span>
-              <span className="leading-none">
-                <span className="block text-2xl font-extrabold tracking-tight">{BRAND_CONFIG.name}</span>
-                <span className="block mt-1.5 text-[10px] font-semibold uppercase tracking-[0.55em] text-white/50">Pakistan</span>
-              </span>
-            </div>
+            <img src={logoWhite} alt="MSchool Pakistan" draggable={false} className="h-20 sm:h-24 w-auto" />
             <p className="mt-6 text-lg leading-snug text-white/50">
               We turn everyday school work into one simple system, built by school owners who run schools themselves.
             </p>
