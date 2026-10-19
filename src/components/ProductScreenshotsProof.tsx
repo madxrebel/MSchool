@@ -80,7 +80,7 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
                   {getScreenIcon(screen.id)}
                 </div>
                 <div className="min-w-0">
-                  <div className="text-xs font-bold truncate">{screen.name}</div>
+                  <div className="text-xs font-bold leading-tight sm:truncate">{screen.name}</div>
                   <div className={`text-[10px] truncate ${isSelected ? 'text-white/80' : 'text-[#5f6368]'}`}>
                     {screen.id === 'dashboard' ? 'Daily pulse' : screen.id === 'fees' ? 'Fee counter' : screen.id === 'attendance' ? '15s check-in' : 'Instant search'}
                   </div>
@@ -149,16 +149,16 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
               <div className="lg:col-span-7 bg-white rounded-2xl border border-[#dadce0] p-4 sm:p-5 shadow-xs">
                 
                 {/* Simulated Desktop Window Bar */}
-                <div className="flex items-center justify-between pb-3 border-b border-[#f1f3f4] mb-4">
-                  <div className="flex items-center gap-2">
-                    <div className="flex gap-1">
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-2 pb-3 border-b border-[#f1f3f4] mb-4">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className="flex gap-1 shrink-0">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#ea4335]" />
                       <span className="w-2.5 h-2.5 rounded-full bg-[#fbbc05]" />
                       <span className="w-2.5 h-2.5 rounded-full bg-[#34a853]" />
                     </div>
-                    <span className="text-[11px] font-mono text-[#5f6368] ml-2">MSchool — {selectedScreen.name}</span>
+                    <span className="text-[11px] font-mono text-[#5f6368] ml-2 min-w-0">MSchool — {selectedScreen.name}</span>
                   </div>
-                  <span className="text-[10px] font-bold text-[#137333] bg-[#e6f4ea] px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold text-[#137333] bg-[#e6f4ea] px-2 py-0.5 rounded-full whitespace-nowrap">
                     Live Campus Connection
                   </span>
                 </div>
@@ -166,37 +166,37 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
                 {/* Dashboard Screen Mockup */}
                 {selectedScreen.id === 'dashboard' && (
                   <div className="space-y-3 font-sans">
-                    <div className="grid grid-cols-3 gap-2.5">
-                      <div className="p-3 bg-[#e8f0fe]/50 border border-[#d2e3fc] rounded-xl text-center">
-                        <div className="text-[11px] font-semibold text-[#1a73e8]">Present Today</div>
-                        <div className="text-xl font-black text-[#1a73e8] mt-0.5">94.8%</div>
-                        <div className="text-[10px] text-[#5f6368]">1,374 / 1,450 students</div>
+                    <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-2.5">
+                      <div className="p-3 bg-[#e8f0fe]/50 border border-[#d2e3fc] rounded-xl grid grid-cols-[1fr_auto] gap-x-3 items-center text-left min-[480px]:block min-[480px]:text-center">
+                        <div className="col-start-1 text-[11px] font-semibold text-[#1a73e8]">Present Today</div>
+                        <div className="col-start-2 row-start-1 row-span-2 self-center text-xl font-black whitespace-nowrap text-[#1a73e8] min-[480px]:mt-0.5">94.8%</div>
+                        <div className="col-start-1 text-[10px] text-[#5f6368]">1,374 / 1,450 students</div>
                       </div>
-                      <div className="p-3 bg-[#e6f4ea]/50 border border-[#ceead6] rounded-xl text-center">
-                        <div className="text-[11px] font-semibold text-[#137333]">Fee Collection</div>
-                        <div className="text-xl font-black text-[#137333] mt-0.5">Rs. 84,000</div>
-                        <div className="text-[10px] text-[#5f6368]">42 receipts printed</div>
+                      <div className="p-3 bg-[#e6f4ea]/50 border border-[#ceead6] rounded-xl grid grid-cols-[1fr_auto] gap-x-3 items-center text-left min-[480px]:block min-[480px]:text-center">
+                        <div className="col-start-1 text-[11px] font-semibold text-[#137333]">Fee Collection</div>
+                        <div className="col-start-2 row-start-1 row-span-2 self-center text-xl font-black whitespace-nowrap text-[#137333] min-[480px]:mt-0.5">Rs. 84,000</div>
+                        <div className="col-start-1 text-[10px] text-[#5f6368]">42 receipts printed</div>
                       </div>
-                      <div className="p-3 bg-[#fef7e0]/50 border border-[#fde293] rounded-xl text-center">
-                        <div className="text-[11px] font-semibold text-[#b06000]">Staff Checked In</div>
-                        <div className="text-xl font-black text-[#b06000] mt-0.5">48 / 50</div>
-                        <div className="text-[10px] text-[#5f6368]">2 late notices sent</div>
+                      <div className="p-3 bg-[#fef7e0]/50 border border-[#fde293] rounded-xl grid grid-cols-[1fr_auto] gap-x-3 items-center text-left min-[480px]:block min-[480px]:text-center">
+                        <div className="col-start-1 text-[11px] font-semibold text-[#b06000]">Staff Checked In</div>
+                        <div className="col-start-2 row-start-1 row-span-2 self-center text-xl font-black whitespace-nowrap text-[#b06000] min-[480px]:mt-0.5">48 / 50</div>
+                        <div className="col-start-1 text-[10px] text-[#5f6368]">2 late notices sent</div>
                       </div>
                     </div>
 
                     <div className="p-3 bg-[#f8f9fa] border border-[#dadce0] rounded-xl space-y-2">
-                      <div className="flex items-center justify-between text-xs font-bold text-[#202124]">
+                      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs font-bold text-[#202124]">
                         <span>Today&apos;s Urgent Defaulter Follow-ups</span>
-                        <span className="text-[10px] text-[#1a73e8] cursor-pointer">Export List</span>
+                        <span className="text-[10px] text-[#1a73e8] cursor-pointer whitespace-nowrap">Export List</span>
                       </div>
                       <div className="divide-y divide-[#dadce0] text-xs">
-                        <div className="py-1.5 flex justify-between items-center">
+                        <div className="py-1.5 flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:items-center">
                           <span>Zaheer Ahmed (Class 4-A) • GR #121</span>
-                          <span className="font-bold text-[#d93025]">Rs. 17,500 due</span>
+                          <span className="font-bold text-[#d93025] whitespace-nowrap">Rs. 17,500 due</span>
                         </div>
-                        <div className="py-1.5 flex justify-between items-center">
+                        <div className="py-1.5 flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:items-center">
                           <span>Khalid Hussain (Class 10-A) • GR #123</span>
-                          <span className="font-bold text-[#d93025]">Rs. 17,500 due</span>
+                          <span className="font-bold text-[#d93025] whitespace-nowrap">Rs. 17,500 due</span>
                         </div>
                       </div>
                     </div>
@@ -206,18 +206,18 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
                 {/* Fees & Counter Screen Mockup */}
                 {selectedScreen.id === 'fees' && (
                   <div className="space-y-3 font-sans">
-                    <div className="p-3 bg-[#f8fafd] border border-[#d2e3fc] rounded-xl flex items-center justify-between">
+                    <div className="p-3 bg-[#f8fafd] border border-[#d2e3fc] rounded-xl flex flex-wrap items-center justify-between gap-2">
                       <div>
                         <div className="font-bold text-xs text-[#202124]">Muhammad Ahmed (Class 5-A)</div>
                         <div className="text-[11px] text-[#5f6368]">Family ID: FAM-109 • 2 Siblings Enrolled</div>
                       </div>
-                      <span className="text-xs font-extrabold text-[#1a73e8] bg-[#e8f0fe] px-2.5 py-1 rounded-full">
+                      <span className="text-xs font-extrabold text-[#1a73e8] bg-[#e8f0fe] px-2.5 py-1 rounded-full whitespace-nowrap">
                         Rs. 2,000 / month
                       </span>
                     </div>
 
                     <div className="p-3 bg-white border border-[#dadce0] rounded-xl space-y-2 text-xs">
-                      <div className="font-bold text-[#202124] flex items-center justify-between">
+                      <div className="font-bold text-[#202124] flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
                         <span>Selected Billing Months</span>
                         <span className="text-[#137333] font-bold">Total: Rs. 6,000</span>
                       </div>
@@ -228,7 +228,7 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 pt-1">
+                    <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-stretch gap-2 pt-1">
                       <div className="flex-1 p-2 rounded-lg bg-[#e6f4ea] text-[#137333] text-xs font-semibold flex items-center justify-center gap-1.5">
                         <Printer className="w-3.5 h-3.5" />
                         <span>Print 58mm Thermal Slip (2s)</span>
@@ -244,27 +244,27 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
                 {/* Attendance Screen Mockup */}
                 {selectedScreen.id === 'attendance' && (
                   <div className="space-y-3 font-sans">
-                    <div className="flex items-center justify-between text-xs font-bold text-[#202124] bg-[#f8f9fa] p-2.5 rounded-xl border border-[#dadce0]">
+                    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-xs font-bold text-[#202124] bg-[#f8f9fa] p-2.5 rounded-xl border border-[#dadce0]">
                       <span>Class: Nursery - Section A</span>
                       <span className="text-[#137333]">32 Present • 2 Absent</span>
                     </div>
 
                     <div className="space-y-1.5 text-xs">
-                      <div className="p-2 rounded-lg bg-white border border-[#dadce0] flex items-center justify-between">
+                      <div className="p-2 rounded-lg bg-white border border-[#dadce0] flex items-center justify-between gap-2">
                         <span>103 • Umar Majeed</span>
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#e6f4ea] text-[#137333]">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold whitespace-nowrap bg-[#e6f4ea] text-[#137333]">
                           PRESENT
                         </span>
                       </div>
-                      <div className="p-2 rounded-lg bg-white border border-[#dadce0] flex items-center justify-between">
+                      <div className="p-2 rounded-lg bg-white border border-[#dadce0] flex items-center justify-between gap-2">
                         <span>201 • Sammi Khan</span>
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#fef7e0] text-[#b06000]">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold whitespace-nowrap bg-[#fef7e0] text-[#b06000]">
                           LATE (08:15 AM)
                         </span>
                       </div>
-                      <div className="p-2 rounded-lg bg-white border border-[#dadce0] flex items-center justify-between">
+                      <div className="p-2 rounded-lg bg-white border border-[#dadce0] flex items-center justify-between gap-2">
                         <span>203 • Bibi Sanjii</span>
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#fce8e6] text-[#c5221f]">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold whitespace-nowrap bg-[#fce8e6] text-[#c5221f]">
                           ABSENT (SMS Sent)
                         </span>
                       </div>
@@ -290,7 +290,7 @@ export const ProductScreenshotsProof: React.FC<ProductScreenshotsProofProps> = (
                     </div>
 
                     <div className="p-3 bg-white border border-[#dadce0] rounded-xl space-y-2 text-xs">
-                      <div className="flex justify-between items-center border-b border-[#f1f3f4] pb-1.5">
+                      <div className="flex flex-wrap justify-between items-center gap-x-2 gap-y-1 border-b border-[#f1f3f4] pb-1.5">
                         <span className="font-bold text-[#202124]">Muhammad Ahmed</span>
                         <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#e6f4ea] text-[#137333]">Active Enrolled</span>
                       </div>
