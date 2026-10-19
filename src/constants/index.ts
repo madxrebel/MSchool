@@ -82,8 +82,9 @@ export const BRAND_CONFIG = {
 export const SOCIAL_LINKS = {
   instagram: 'https://www.instagram.com/mschool_by_tmh/',
   tiktok: 'https://www.tiktok.com/@mschool20',
-  // Add the public Facebook page address here (not the "professional_dashboard" admin link)
-  facebook: '',
+  // NOTE: this is the address supplied for the page. facebook.com/professional_dashboard is usually the
+  // private admin view; replace it with the public page address (facebook.com/<page-name>) when known.
+  facebook: 'https://www.facebook.com/professional_dashboard/',
 } as const;
 
 export const NAV_ITEMS = [
