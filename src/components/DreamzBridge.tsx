@@ -8,6 +8,8 @@ import row3 from '../assets/dreamz/books-row-3.jpg';
 
 interface DreamzBridgeProps {
   color: string;
+  /** Text colour that adapts to the theme */
+  ink: string;
   /** MKids app icon */
   appIcon?: string;
   /** Landscape app screens; the first few are cycled next to the book */
@@ -19,9 +21,9 @@ interface DreamzBridgeProps {
  * MKids is the ebook of those books. Book covers are illustrations from the company's poster.
  */
 const CLASSES = [
-  { cls: 'Nursery', book: 'Book A', color: '#1a73e8' },
-  { cls: 'KG-1', book: 'Book B', color: '#1e8e3e' },
-  { cls: 'KG-2', book: 'Book C', color: '#f29900' },
+  { cls: 'Nursery', book: 'Book A', color: '#1a73e8', ink: 'var(--ink-mschool)' },
+  { cls: 'KG-1', book: 'Book B', color: '#1e8e3e', ink: 'var(--ink-mstudent)' },
+  { cls: 'KG-2', book: 'Book C', color: '#f29900', ink: 'var(--ink-mkids)' },
 ];
 
 const STEPS = [
@@ -30,7 +32,7 @@ const STEPS = [
   { Icon: Sparkles, title: 'The page comes alive', text: 'The same page opens in MKids to play, trace and match.' },
 ];
 
-export const DreamzBridge: React.FC<DreamzBridgeProps> = ({ color, appIcon, screens }) => {
+export const DreamzBridge: React.FC<DreamzBridgeProps> = ({ color, ink, appIcon, screens }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: '0px 0px -15% 0px' });
   const reduceMotion = useReducedMotion();
@@ -48,7 +50,7 @@ export const DreamzBridge: React.FC<DreamzBridgeProps> = ({ color, appIcon, scre
       {/* Joined header: Dreamz + MKids */}
       <div className="rounded-3xl border p-5 sm:p-7 flex flex-col sm:flex-row items-center gap-5 sm:gap-7" style={{ borderColor: `${color}40`, backgroundColor: `${color}0d` }}>
         <div className="flex items-center gap-3 shrink-0">
-          <span className="w-20 h-20 rounded-2xl bg-white border border-[#e8eaed] p-1.5 shadow-sm flex items-center justify-center">
+          <span className="keep-theme w-20 h-20 rounded-2xl bg-white border border-[#e8eaed] p-1.5 shadow-sm flex items-center justify-center">
             <img src={dreamzLogo} alt="Dreamz Publications" draggable={false} className="w-full h-full object-contain" />
           </span>
           <span className="text-2xl font-extrabold text-[#5f6368]">+</span>
@@ -77,7 +79,7 @@ export const DreamzBridge: React.FC<DreamzBridgeProps> = ({ color, appIcon, scre
           </div>
         </div>
 
-        <div className="flex lg:flex-col items-center justify-center gap-2 text-center" style={{ color }}>
+        <div className="flex lg:flex-col items-center justify-center gap-2 text-center" style={{ color: ink }}>
           <ArrowRight className="hidden lg:block w-8 h-8 animate-pulse" />
           <ArrowDown className="lg:hidden w-7 h-7 animate-pulse" />
           <span className="text-[11px] font-bold uppercase tracking-[0.14em]">Type or scan</span>
@@ -109,10 +111,10 @@ export const DreamzBridge: React.FC<DreamzBridgeProps> = ({ color, appIcon, scre
           {CLASSES.map((c) => (
             <div key={c.cls} className="rounded-2xl border border-[#e8eaed] p-4 bg-white">
               <div className="flex items-center justify-between">
-                <span className="text-base font-extrabold" style={{ color: c.color }}>
+                <span className="text-base font-extrabold" style={{ color: c.ink }}>
                   {c.cls}
                 </span>
-                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: `${c.color}1a`, color: c.color }}>
+                <span className="text-[11px] font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: `${c.color}1a`, color: c.ink }}>
                   {c.book}
                 </span>
               </div>
@@ -126,7 +128,7 @@ export const DreamzBridge: React.FC<DreamzBridgeProps> = ({ color, appIcon, scre
       <ol className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {STEPS.map(({ Icon, title, text }, i) => (
           <li key={title} className="flex items-start gap-3 rounded-2xl bg-white border border-[#e8eaed] p-4">
-            <span className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}1a`, color }}>
+            <span className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}1a`, color: ink }}>
               <Icon className="w-[18px] h-[18px]" />
             </span>
             <span>

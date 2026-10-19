@@ -19,6 +19,10 @@ export interface Product {
   subtitle: string;
   status: ProductStatus;
   color: string;
+  /** Text colour for this product (a CSS variable that adapts to the theme) */
+  ink: string;
+  /** Text colour used on top of `color` (white, or dark on the orange) */
+  on: string;
   description: string;
   platforms: ('Android' | 'Web' | 'Tablet')[];
   stats: [value: string, label: string][];
@@ -54,6 +58,8 @@ export const PRODUCTS: Product[] = [
     subtitle: 'School management',
     status: 'live',
     color: '#1a73e8',
+    ink: 'var(--ink-mschool)',
+    on: '#ffffff',
     description:
       'Run your whole school from an Android phone or tablet: students, fees, attendance, exams, question papers, ID cards and certificates, all in one place.',
     platforms: ['Android', 'Web'],
@@ -87,7 +93,9 @@ export const PRODUCTS: Product[] = [
     name: 'MStudent',
     subtitle: 'Parent and student app',
     status: 'live',
-    color: '#1e8e3e',
+    color: '#188038',
+    ink: 'var(--ink-mstudent)',
+    on: '#ffffff',
     description:
       'The app that connects the school with parents. Track diaries, attendance, notices, fees and exam results, while students learn with lessons and practice quizzes.',
     platforms: ['Android'],
@@ -109,6 +117,8 @@ export const PRODUCTS: Product[] = [
     subtitle: 'The ebook of Dreamz books',
     status: 'preview',
     color: '#f29900',
+    ink: 'var(--ink-mkids)',
+    on: '#202124',
     description:
       'MKids is the digital version of the Dreamz Publications Pre-Primary books for Nursery, KG-1 and KG-2. Every page comes alive: children play, trace and match, and can type or scan a page number from the book to jump straight to it.',
     platforms: ['Android'],

@@ -12,7 +12,7 @@ const SchoolBadge: React.FC<{ name: string; src: string }> = ({ name, src }) => 
       alt={`${name} logo`}
       loading="lazy"
       draggable={false}
-      className="w-20 h-20 rounded-2xl object-contain bg-white p-0.5 shadow-md"
+      className="keep-theme w-20 h-20 rounded-2xl object-contain bg-white p-0.5 shadow-md"
     />
     <span className="block text-left text-lg sm:text-xl font-bold text-white whitespace-nowrap">{name}</span>
   </div>

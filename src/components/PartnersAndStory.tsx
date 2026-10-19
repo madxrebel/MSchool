@@ -109,7 +109,7 @@ export const PartnersAndStory: React.FC<PartnersAndStoryProps> = () => {
                   alt={`${school.name} logo`}
                   loading="lazy"
                   draggable={false}
-                  className="w-20 h-20 rounded-2xl object-contain bg-white border border-[#e8eaed] p-0.5"
+                  className="keep-theme w-20 h-20 rounded-2xl object-contain bg-white border border-[#e8eaed] p-0.5"
                 />
                 <div className="text-sm font-bold text-[#202124] leading-snug">{school.name}</div>
               </div>

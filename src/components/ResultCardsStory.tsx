@@ -274,7 +274,7 @@ export const ResultCardsStory: React.FC<ResultCardsStoryProps> = ({ onOpenBookin
                     src={logo}
                     alt=""
                     draggable={false}
-                    className="w-12 h-12 rounded-xl object-contain bg-white border border-[#e8eaed] p-0.5"
+                    className="keep-theme w-12 h-12 rounded-xl object-contain bg-white border border-[#e8eaed] p-0.5"
                   />
                 ) : (
                   <span className="w-12 h-12 rounded-xl bg-[#e8f0fe] text-[#1a73e8] font-extrabold flex items-center justify-center">

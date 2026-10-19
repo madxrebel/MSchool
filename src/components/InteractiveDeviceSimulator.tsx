@@ -398,7 +398,7 @@ export const InteractiveDeviceSimulator: React.FC<SimulatorProps> = ({ initialTa
             </div>
 
             {/* Screen Viewport */}
-            <div className="relative bg-slate-100 text-slate-900 rounded-[30px] overflow-hidden h-[clamp(460px,calc(100svh-170px),640px)] flex flex-col font-sans select-none border border-slate-200 shadow-inner">
+            <div className="keep-theme relative bg-slate-100 text-slate-900 rounded-[30px] overflow-hidden h-[clamp(460px,calc(100svh-170px),640px)] flex flex-col font-sans select-none border border-slate-200 shadow-inner">
               
               {/* Status Bar */}
               <div className="bg-slate-900 text-slate-300 px-5 pt-2 pb-1 flex items-center justify-between text-[11px] font-mono shrink-0">

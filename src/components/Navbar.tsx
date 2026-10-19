@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ChevronRight, LogIn } from 'lucide-react';
 import { CTA_TEXTS, PORTAL_URL } from '../constants';
 import logo from '../assets/brand/logo.png';
+import logoWhite from '../assets/brand/logo-white.png';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -36,15 +38,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             src={logo}
             alt="MSchool Pakistan"
             draggable={false}
-            className="h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
+            className="logo-on-light h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
+          />
+          <img
+            src={logoWhite}
+            alt=""
+            aria-hidden
+            draggable={false}
+            className="logo-on-dark h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
           />
         </a>
 
         {/* Login + single CTA */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           <a
             href={PORTAL_URL}
-            className="h-10 px-4 sm:px-5 rounded-full text-sm font-semibold text-[#1a73e8] bg-white border-2 border-[#1a73e8] hover:bg-[#e8f0fe] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1.5 shrink-0 active:scale-98"
+            className="h-10 px-3.5 sm:px-5 rounded-full text-sm font-semibold text-[#1a73e8] bg-white border-2 border-[#1a73e8] hover:bg-[#e8f0fe] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1.5 shrink-0 active:scale-98"
           >
             <LogIn className="w-4 h-4" />
             <span>{CTA_TEXTS.LOGIN}</span>
@@ -52,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
 
           <button
             onClick={onOpenBooking}
-            className="h-10 px-4 sm:px-5 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1 cursor-pointer active:scale-98 shrink-0"
+            className="h-10 px-3.5 sm:px-5 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1 cursor-pointer active:scale-98 shrink-0"
           >
             <span className="sm:hidden">{CTA_TEXTS.BOOK_DEMO_SHORT}</span>
             <span className="hidden sm:inline">{CTA_TEXTS.BOOK_FREE_DEMO}</span>

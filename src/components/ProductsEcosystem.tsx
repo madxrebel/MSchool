@@ -23,7 +23,7 @@ const ProductIcon: React.FC<{ product: Product; size?: string; active?: boolean 
   return (
     <span
       className={`${size} rounded-2xl flex items-center justify-center shrink-0 transition-colors`}
-      style={{ backgroundColor: active ? product.color : `${product.color}1a`, color: active ? '#fff' : product.color }}
+      style={{ backgroundColor: active ? product.color : `${product.color}1a`, color: active ? product.on : product.ink }}
     >
       <Icon className="w-1/2 h-1/2" />
     </span>
@@ -67,8 +67,8 @@ const ScreenExplorer: React.FC<{ product: Product }> = ({ product }) => {
               style={active ? { borderColor: `${product.color}55` } : undefined}
             >
               <span
-                className="mt-0.5 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center shrink-0 transition-colors"
-                style={active ? { backgroundColor: product.color, color: '#fff' } : { backgroundColor: '#f1f3f4', color: '#5f6368' }}
+                className={`mt-0.5 w-6 h-6 rounded-full text-[11px] font-bold flex items-center justify-center shrink-0 transition-colors ${active ? '' : 'bg-[#f1f3f4] text-[#5f6368]'}`}
+                style={active ? { backgroundColor: product.color, color: product.on } : undefined}
               >
                 {i + 1}
               </span>
@@ -177,9 +177,9 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                 key={p.id}
                 onClick={() => goTo(i)}
                 className={`h-9 px-3 rounded-full text-xs font-semibold border transition-colors cursor-pointer whitespace-nowrap ${
-                  i === active ? 'text-white border-transparent' : 'bg-white text-[#5f6368] border-[#dadce0]'
+                  i === active ? 'border-transparent' : 'bg-white text-[#5f6368] border-[#dadce0]'
                 }`}
-                style={i === active ? { backgroundColor: p.color } : undefined}
+                style={i === active ? { backgroundColor: p.color, color: p.on } : undefined}
               >
                 {p.name}
               </button>
@@ -213,14 +213,14 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                       {on && <span className="absolute -left-2.5 top-2 bottom-2 w-1 rounded-full" style={{ backgroundColor: p.color }} />}
                       <ProductIcon product={p} size="w-11 h-11" active={on} />
                       <span className="min-w-0 flex-1">
-                        <span className="block text-sm font-bold truncate" style={on ? { color: p.color } : { color: '#3c4043' }}>
+                        <span className={`block text-sm font-bold truncate ${on ? '' : 'text-[#3c4043]'}`} style={on ? { color: p.ink } : undefined}>
                           {p.name}
                         </span>
                         <span className="block text-xs text-[#5f6368] truncate">{p.subtitle}</span>
                       </span>
                       <span
-                        className="w-6 h-6 rounded-md text-[11px] font-bold flex items-center justify-center shrink-0"
-                        style={on ? { backgroundColor: p.color, color: '#fff' } : { backgroundColor: '#f1f3f4', color: '#5f6368' }}
+                        className={`w-6 h-6 rounded-md text-[11px] font-bold flex items-center justify-center shrink-0 ${on ? '' : 'bg-[#f1f3f4] text-[#5f6368]'}`}
+                        style={on ? { backgroundColor: p.color, color: p.on } : undefined}
                       >
                         {i + 1}
                       </span>
@@ -264,7 +264,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                   <div className="flex flex-wrap items-center gap-2 mb-4">
                     <span
                       className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-[0.14em]"
-                      style={{ backgroundColor: `${p.color}14`, color: p.color }}
+                      style={{ backgroundColor: `${p.color}14`, color: p.ink }}
                     >
                       <i className="w-2 h-2 rounded-full" style={{ backgroundColor: p.color }} />
                       Product {i + 1} of {N}
@@ -292,7 +292,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                           const Ic = PLATFORM_ICON[pl];
                           return (
                             <span key={pl} className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-[#dadce0] text-xs font-semibold">
-                              <Ic className="w-3.5 h-3.5" style={{ color: p.color }} />
+                              <Ic className="w-3.5 h-3.5" style={{ color: p.ink }} />
                               {pl}
                             </span>
                           );
@@ -304,7 +304,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                       <div className="flex flex-wrap gap-2.5">
                         {p.stats.map(([v, l]) => (
                           <div key={l} className="rounded-2xl border border-[#e8eaed] px-4 py-2.5 min-w-[96px]">
-                            <b className="block text-xl font-extrabold leading-tight" style={{ color: p.color }}>
+                            <b className="block text-xl font-extrabold leading-tight" style={{ color: p.ink }}>
                               {v}
                             </b>
                             <span className="text-[10px] uppercase tracking-[0.1em] text-[#5f6368]">{l}</span>
@@ -335,7 +335,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                     </button>
                   </div>
 
-                  {p.id === 'mkids' && p.screens && <DreamzBridge color={p.color} appIcon={p.iconSrc} screens={p.screens} />}
+                  {p.id === 'mkids' && p.screens && <DreamzBridge color={p.color} ink={p.ink} appIcon={p.iconSrc} screens={p.screens} />}
 
                   {/* The interactive part */}
                   <div className="mt-10 rounded-3xl bg-[#f8f9fa] border border-[#e8eaed] p-5 sm:p-8">
@@ -347,7 +347,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                     <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                       {p.includes.map((item) => (
                         <li key={item} className="flex items-center gap-2 rounded-xl border border-[#e8eaed] px-3 py-2.5 text-sm font-semibold">
-                          <Check className="w-4 h-4 shrink-0" style={{ color: p.color }} />
+                          <Check className="w-4 h-4 shrink-0" style={{ color: p.ink }} />
                           <span className="min-w-0">{item}</span>
                         </li>
                       ))}
@@ -358,7 +358,7 @@ export const ProductsEcosystem: React.FC<ProductsEcosystemProps> = ({ onOpenBook
                     <button
                       onClick={() => goTo(i + 1)}
                       className="mt-10 inline-flex items-center gap-2 text-sm font-semibold cursor-pointer group"
-                      style={{ color: next.color }}
+                      style={{ color: next.ink }}
                     >
                       Next: {next.name}
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
