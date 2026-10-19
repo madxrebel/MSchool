@@ -13,7 +13,6 @@ const LINE_2 = 'Yours can too.'.split(' ');
 const CLOCK_FROM = 11 * 60;
 const CLOCK_TO = 8 * 60 + 40;
 const CLOCK_MS = 2200;
-const HOLD_MS = 6000; // how long the finished scene stays before it replays
 
 const fmt = (minutes: number) => {
   const h = Math.floor(minutes / 60);
@@ -28,7 +27,8 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenBooking })
   const [play, setPlay] = useState(false);
   const [clock, setClock] = useState(CLOCK_FROM);
 
-  // Plays when the section scrolls into view, holds, then replays while it stays on screen.
+  // Plays once when the section scrolls into view and then stays put so it can be read.
+  // Scrolling away resets it, so it plays again the next time the visitor comes back.
   useEffect(() => {
     if (reduceMotion) {
       setPlay(true);
@@ -41,8 +41,6 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenBooking })
       return;
     }
     let raf = 0;
-    let replay: ReturnType<typeof setTimeout>;
-    let start: ReturnType<typeof setTimeout>;
     const run = () => {
       setPlay(true);
       setClock(CLOCK_FROM);
@@ -54,16 +52,10 @@ export const ProblemSection: React.FC<ProblemSectionProps> = ({ onOpenBooking })
         if (p < 1) raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
-      replay = setTimeout(() => {
-        setPlay(false);
-        start = setTimeout(run, 700);
-      }, 900 + CLOCK_MS + HOLD_MS);
     };
     run();
     return () => {
       cancelAnimationFrame(raf);
-      clearTimeout(replay);
-      clearTimeout(start);
     };
   }, [inView, reduceMotion]);
 

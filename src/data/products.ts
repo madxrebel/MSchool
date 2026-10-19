@@ -17,6 +17,10 @@ export interface Product {
   id: string;
   name: string;
   subtitle: string;
+  /** Who it is for, in a few words (used on the ecosystem cards) */
+  role: string;
+  /** Three short, true points (used on the ecosystem cards) */
+  points: string[];
   status: ProductStatus;
   color: string;
   /** Text colour for this product (a CSS variable that adapts to the theme) */
@@ -56,6 +60,8 @@ export const PRODUCTS: Product[] = [
     id: 'mschool',
     name: 'MSchool',
     subtitle: 'School management',
+    role: 'School management on Android',
+    points: ['Fee collection, receipts and defaulter lists', 'Digital or manual attendance', 'Exams, question papers, ID cards and certificates'],
     status: 'live',
     color: '#1a73e8',
     ink: 'var(--ink-mschool)',
@@ -92,6 +98,8 @@ export const PRODUCTS: Product[] = [
     id: 'mstudent',
     name: 'MStudent',
     subtitle: 'Parent and student app',
+    role: 'The app for parents and students',
+    points: ['Daily diaries, attendance and notices', 'Test and exam results', 'Lessons and practice quizzes for students'],
     status: 'live',
     color: '#188038',
     ink: 'var(--ink-mstudent)',
@@ -115,6 +123,8 @@ export const PRODUCTS: Product[] = [
     id: 'mkids',
     name: 'MKids',
     subtitle: 'The ebook of Dreamz books',
+    role: 'The ebook of Dreamz Publications books',
+    points: ['Nursery, KG-1 and KG-2', 'English, Urdu and Math games', 'Type or scan a page number from the book'],
     status: 'preview',
     color: '#f29900',
     ink: 'var(--ink-mkids)',

@@ -384,52 +384,6 @@ export const WHY_CHOOSE_CONTENT = {
   ],
 } as const;
 
-export const ECOSYSTEM_CONTENT = {
-  eyebrow: 'Connected Learning Ecosystem',
-  headline: 'More than a school management app.',
-  subheadline: 'One ecosystem for the school, classroom, parent and child.',
-  clarification:
-    'MSchool Core gives you complete administrative control. Additional connected modules extend into classrooms and homes when you need them.',
-  modules: [
-    {
-      id: 'mschool',
-      title: 'MSchool Core',
-      role: 'School Administration & Fee Counter',
-      description:
-        'The central operating hub for admissions, atomic fee collections, 58mm thermal receipts, student profiles, and executive visibility.',
-      badge: 'Primary System',
-      color: '#1a73e8',
-    },
-    {
-      id: 'mattendance',
-      title: 'mAttendance',
-      role: 'Classroom Sweeps & Staff Check-in',
-      description:
-        'Fast classroom attendance tool for teachers with automated parent absence notifications and staff biometric check-in tracking.',
-      badge: 'Teacher Tool',
-      color: '#1e8e3e',
-    },
-    {
-      id: 'maymar',
-      title: 'Maymar Academy App',
-      role: 'Parent Companion & Homework Diary',
-      description:
-        'Smartphone companion for parents with daily homework photos, digital report cards, and automated WhatsApp fee receipts.',
-      badge: 'Parent Portal',
-      color: '#d93025',
-    },
-    {
-      id: 'mkids',
-      title: 'mKids Learning Suite',
-      role: 'Printed Textbooks + Interactive Games',
-      description:
-        'Physical school syllabus textbooks paired with gamified Math Car Racing, phonics speech, and interactive touch-screen handwriting tracing.',
-      badge: 'Early EdTech',
-      color: '#f29900',
-    },
-  ],
-} as const;
-
 export const DIRECT_OBJECTIONS_FAQS = [
   {
     question: 'Will this work with our internet?',

@@ -35,8 +35,6 @@ const CLASSES = ['Nur', 'KG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 const UPLOAD_START_MS = 600;
 const UPLOAD_STEP_MS = 220;
 const COUNT_MS = 1400;
-const HOLD_MS = 3200;
-const RESET_PAUSE_MS = 900;
 
 const STEPS = ['Teachers upload', 'Principal approves', 'One click'];
 
@@ -99,14 +97,6 @@ export const ResultCardsStory: React.FC<ResultCardsStoryProps> = ({ onOpenBookin
         }, 40);
       });
       at(generateAt + COUNT_MS + 100, () => setStage(5));
-
-      const endsAt = generateAt + COUNT_MS + HOLD_MS;
-      at(endsAt, () => {
-        setStage(0);
-        setUploaded(0);
-        setCount(0);
-      });
-      at(endsAt + RESET_PAUSE_MS, runCycle);
     };
 
     runCycle();

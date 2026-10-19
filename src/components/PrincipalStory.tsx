@@ -28,8 +28,6 @@ const TASKS = ['Attendance', 'Fee registers', 'Result cards', 'Expenses', 'Repor
 
 const STEP_MS = 650;
 const START_DELAY_MS = 700;
-const HOLD_MS = 2800; // how long 'Time to lead' stays on screen before the loop restarts
-const RESET_PAUSE_MS = 900;
 
 export const PrincipalStory: React.FC<PrincipalStoryProps> = ({ onOpenBooking }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -38,8 +36,8 @@ export const PrincipalStory: React.FC<PrincipalStoryProps> = ({ onOpenBooking })
   const [done, setDone] = useState(0);
   const [replay, setReplay] = useState(0);
 
-  // Plays whenever the section is on screen: paperwork melts away, "Time to lead" holds, then it
-  // resets and plays again. Leaving the screen resets it, so it restarts on every scroll-in.
+  // Plays once when the section scrolls into view and then stays on "Time to lead" so it can be read.
+  // Scrolling away resets it, so it plays again the next time the visitor comes back.
   useEffect(() => {
     if (reduceMotion) {
       setDone(TASKS.length);
@@ -55,9 +53,6 @@ export const PrincipalStory: React.FC<PrincipalStoryProps> = ({ onOpenBooking })
       TASKS.forEach((_, i) => {
         timers.push(setTimeout(() => setDone(i + 1), START_DELAY_MS + i * STEP_MS));
       });
-      const endsAt = START_DELAY_MS + TASKS.length * STEP_MS + HOLD_MS;
-      timers.push(setTimeout(() => setDone(0), endsAt));
-      timers.push(setTimeout(runCycle, endsAt + RESET_PAUSE_MS));
     };
     runCycle();
     return () => timers.forEach(clearTimeout);
