@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/mkids", "destination": "/index.html" },
+    { "source": "/MKids", "destination": "/index.html" }
+  ]
+}
