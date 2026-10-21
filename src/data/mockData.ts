@@ -149,7 +149,7 @@ export const INITIAL_STAFF: StaffMember[] = [
     name: 'Wali Khan',
     fatherOrHusbandName: 'Ahmed Ali',
     role: 'Principal',
-    phone: '03358009786',
+    phone: '0300-1234567',
     attendanceToday: 'PRESENT',
     baseSalary: 75000,
   },
@@ -232,17 +232,6 @@ export const WORD_OF_THE_DAY = {
   meaning: 'Short and quick in duration or expression',
   example: 'The principal delivered a brief morning address to the assembly.',
 };
-
-export const PARTNER_SCHOOLS = [
-  { name: 'MSchool Model Academy', city: 'Karachi', students: '1,450', tenure: 'Active 3+ Years' },
-  { name: 'Al-Hira Public Higher Secondary', city: 'Karachi', students: '2,100', tenure: 'Active 2+ Years' },
-  { name: 'Quaid Model Grammar School', city: 'Hyderabad', students: '980', tenure: 'Active 2+ Years' },
-  { name: 'Iqra Foundation School System', city: 'Karachi', students: '3,200', tenure: 'Active 3+ Years' },
-  { name: 'The Scholars Cambridge School', city: 'Sukkur', students: '1,120', tenure: 'Active 2 Years' },
-  { name: 'Maymar Educational Complex', city: 'Karachi', students: '1,850', tenure: 'Active 4 Years' },
-  { name: 'Apex Progressive Grammar', city: 'Larkana', students: '750', tenure: 'Active 1.5 Years' },
-  { name: 'Falcon City Cadet Prep School', city: 'Karachi', students: '1,300', tenure: 'Active 2.5 Years' },
-];
 
 export const ECOSYSTEM_MODULES = [
   {

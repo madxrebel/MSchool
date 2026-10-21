@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { GraduationCap, ChevronRight, LogIn } from 'lucide-react';
-import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL } from '../constants';
+import { ChevronRight, LogIn } from 'lucide-react';
+import { CTA_TEXTS, PORTAL_URL } from '../constants';
+import logo from '../assets/brand/logo.png';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -30,20 +32,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
         {/* Brand Identity */}
-        <a href="#overview" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-9 h-9 rounded-xl bg-[#e8f0fe] text-[#1a73e8] border border-[#d2e3fc] flex items-center justify-center font-bold shadow-2xs group-hover:scale-105 transition-transform">
-            <GraduationCap className="w-5 h-5 text-[#1a73e8]" />
-          </div>
-          <span className="text-xl font-bold tracking-tight text-[#202124]">
-            {BRAND_CONFIG.name}
-          </span>
+        <a href="#overview" className="group shrink-0" aria-label="MSchool Pakistan, back to top">
+          <img
+            src={logo}
+            alt="MSchool Pakistan"
+            draggable={false}
+            className="h-11 sm:h-12 w-auto group-hover:scale-[1.03] transition-transform"
+          />
         </a>
 
         {/* Login + single CTA */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle />
           <a
             href={PORTAL_URL}
-            className="h-10 px-4 sm:px-5 rounded-full text-sm font-semibold text-[#1a73e8] bg-white border-2 border-[#1a73e8] hover:bg-[#e8f0fe] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1.5 shrink-0 active:scale-98"
+            className="h-10 px-3.5 sm:px-5 rounded-full text-sm font-semibold text-[#1a73e8] bg-white border-2 border-[#1a73e8] hover:bg-[#e8f0fe] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1.5 shrink-0 active:scale-98"
           >
             <LogIn className="w-4 h-4" />
             <span>{CTA_TEXTS.LOGIN}</span>
@@ -51,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
 
           <button
             onClick={onOpenBooking}
-            className="h-10 px-4 sm:px-5 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1 cursor-pointer active:scale-98 shrink-0"
+            className="h-10 px-3.5 sm:px-5 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] shadow-sm hover:shadow-md transition-all inline-flex items-center justify-center gap-1 cursor-pointer active:scale-98 shrink-0"
           >
             <span className="sm:hidden">{CTA_TEXTS.BOOK_DEMO_SHORT}</span>
             <span className="hidden sm:inline">{CTA_TEXTS.BOOK_FREE_DEMO}</span>

@@ -173,7 +173,7 @@ export const EcosystemOverview: React.FC<EcosystemOverviewProps> = ({
                 <div className="flex items-center justify-between border-b border-[#dadce0] pb-2">
                   <span className="font-semibold text-[#5f6368] uppercase text-[10px]">Campus Impact</span>
                   <span className="text-[#137333] font-bold text-[10px] bg-[#e6f4ea] px-2 py-0.5 rounded-full">
-                    Active in 20+ Schools
+                    Active in Partner Schools
                   </span>
                 </div>
 

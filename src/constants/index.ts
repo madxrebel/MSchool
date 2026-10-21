@@ -24,7 +24,7 @@ export const CTA_TEXTS = {
   SUBMIT_DEMO: 'Request a Free Walkthrough',
   SUBMITTING: 'Arranging Walkthrough...',
   DONE: 'Walkthrough Arranged',
-  WHATSAPP_LINK: 'https://wa.me/923358009786',
+  WHATSAPP_LINK: 'https://wa.me/923042130798',
 
   // Low-risk guarantees & reassurance chips
   LOW_RISK_MICROCOPY: '15-minute walkthrough • Zero sales pressure • See it running with your fee structure',
@@ -69,13 +69,22 @@ export const BRAND_CONFIG = {
   name: 'MSchool',
   badge: 'Pakistan',
   tagline: 'School Management System Built for Schools in Pakistan',
-  supportPhone: '0335-8009786',
-  supportPhoneDisplay: '0335-8009786',
+  supportPhone: '0304-2130798',
+  supportPhoneDisplay: '0304-2130798',
+  supportPhoneTel: '+923042130798', // for tel: links
   supportEmail: 'inquiries@mschoolecosystem.com',
-  whatsappUrl: 'https://wa.me/923358009786',
-  trustClaim: '20+ schools already run on MSchool',
-  partnerCount: '20+',
+  whatsappUrl: 'https://wa.me/923042130798',
+  trustClaim: 'partner schools that run on MSchool every day',
   pilotDuration: 'Free Walkthrough',
+} as const;
+
+/** MSchool's public social pages. Leave a value empty to hide that link. */
+export const SOCIAL_LINKS = {
+  instagram: 'https://www.instagram.com/mschool_by_tmh/',
+  tiktok: 'https://www.tiktok.com/@mschool20',
+  // NOTE: this is the address supplied for the page. facebook.com/professional_dashboard is usually the
+  // private admin view; replace it with the public page address (facebook.com/<page-name>) when known.
+  facebook: 'https://www.facebook.com/professional_dashboard/',
 } as const;
 
 export const NAV_ITEMS = [
@@ -98,7 +107,7 @@ export const HERO_CONTENT = {
   secondaryCta: 'See How MSchool Works',
   lowRiskBadge: 'Free 15-min walkthrough • Zero pushy sales tactics • See your fee structure on screen',
   credibilityPoints: [
-    '20+ schools already use MSchool',
+    'Used every day in partner schools',
     'Built inside real family-run schools',
     'Designed to work reliably on weak internet',
   ],
@@ -314,55 +323,6 @@ export const PROOF_SCREENS_CONTENT = {
   ],
 } as const;
 
-export const CASE_STUDY_CONTENT = {
-  eyebrow: 'Origin Case Study',
-  headline: 'How MSchool was born in a family-run school with 1,450 students.',
-  subheadline:
-    'We didn’t build MSchool from a technology boardroom. We built it standing right behind a crowded Pakistani school fee counter.',
-  storyStages: [
-    {
-      stage: '1. The Breaking Point (2021)',
-      title: '300 parents in queue on the 1st of every month',
-      description:
-        'At our family campus in Karachi, peak fee days were chaos. Parents waited 45 minutes in the morning heat. Excel spreadsheets froze, paper registers had duplicate receipt numbers, and accountants spent evenings recounting cash slips.',
-      metric: '45-min counter wait',
-      tag: 'The Reality',
-    },
-    {
-      stage: '2. Why Existing Software Failed',
-      title: 'Cloud apps built for Western schools didn’t work here',
-      description:
-        'Every software we evaluated had the same fatal flaws: they froze when internet dipped, priced in US dollars, and required trained IT engineers. Our front-desk counter staff needed something fast, simple, and resilient to power outages.',
-      metric: 'Internet dependency',
-      tag: 'The Barrier',
-    },
-    {
-      stage: '3. Building on the Front Counter',
-      title: 'Tested in real front desks, classrooms, and accounts rooms',
-      description:
-        'We built MSchool right on the counter computer. We introduced instant 58mm ink-free thermal receipts (2-second print), unified sibling accounts under one Family ID, and local-first offline storage that never slows down.',
-      metric: '2-sec receipt print',
-      tag: 'The Breakthrough',
-    },
-    {
-      stage: '4. The Measurable Result',
-      title: 'Queue dropped from 45 minutes to 3 minutes',
-      description:
-        'Parents walked in, paid, received their thermal receipt in seconds, and walked out. Class roll calls dropped from 15 minutes of teacher time to 15 seconds. End-of-month reconciliation happened in one click with 0 lost slips.',
-      metric: '3-min counter queue',
-      tag: 'The Outcome',
-    },
-  ],
-  expansionTitle: 'From one family campus to 20+ institutions',
-  expansionDescription:
-    'Principals from neighboring schools saw the thermal receipts and rapid attendance sweeps and asked to use the software. Today, over 20 institutions and 25,000+ enrolled students run daily operations on MSchool.',
-  quote:
-    '“When hundreds of parents visit the fee counter on peak days, you cannot afford frozen software. MSchool prints 58mm thermal receipts in two seconds and updates balances with zero errors.”',
-  quoteAuthor: 'Wali Khan',
-  quoteRole: 'Principal & Campus Administrator, Active Partner School',
-  groundedMessage: 'We understand your environment because we operate in it every single day.',
-} as const;
-
 export const PAKISTAN_CONTEXT_CONTENT = {
   eyebrow: 'Built for the Real World',
   headline: 'Built for how schools actually work.',
@@ -375,13 +335,6 @@ export const PAKISTAN_CONTEXT_CONTENT = {
         'MSchool keeps everyday student records, counter fees, and attendance available on the local device, and syncs reliably whenever connectivity resumes.',
       badge: 'Weak Internet Resilient',
       icon: 'WifiOff',
-    },
-    {
-      title: 'Fast everyday operations without loading lag.',
-      description:
-        'Front-desk counters have queues of parents before morning assembly. Staff shouldn’t have to wait for spinning loaders for every single receipt.',
-      badge: 'Zero Counter Waiting',
-      icon: 'Zap',
     },
     {
       title: 'Reliable financial records with zero lost slips.',
@@ -437,52 +390,6 @@ export const WHY_CHOOSE_CONTENT = {
       title: 'Works in the real world',
       description:
         'Engineered for schools where internet connectivity, electricity, and hardware resources are subject to everyday practical fluctuations.',
-    },
-  ],
-} as const;
-
-export const ECOSYSTEM_CONTENT = {
-  eyebrow: 'Connected Learning Ecosystem',
-  headline: 'More than a school management app.',
-  subheadline: 'One ecosystem for the school, classroom, parent and child.',
-  clarification:
-    'MSchool Core gives you complete administrative control. Additional connected modules extend into classrooms and homes when you need them.',
-  modules: [
-    {
-      id: 'mschool',
-      title: 'MSchool Core',
-      role: 'School Administration & Fee Counter',
-      description:
-        'The central operating hub for admissions, atomic fee collections, 58mm thermal receipts, student profiles, and executive visibility.',
-      badge: 'Primary System',
-      color: '#1a73e8',
-    },
-    {
-      id: 'mattendance',
-      title: 'mAttendance',
-      role: 'Classroom Sweeps & Staff Check-in',
-      description:
-        'Fast classroom attendance tool for teachers with automated parent absence notifications and staff biometric check-in tracking.',
-      badge: 'Teacher Tool',
-      color: '#1e8e3e',
-    },
-    {
-      id: 'maymar',
-      title: 'Maymar Academy App',
-      role: 'Parent Companion & Homework Diary',
-      description:
-        'Smartphone companion for parents with daily homework photos, digital report cards, and automated WhatsApp fee receipts.',
-      badge: 'Parent Portal',
-      color: '#d93025',
-    },
-    {
-      id: 'mkids',
-      title: 'mKids Learning Suite',
-      role: 'Printed Textbooks + Interactive Games',
-      description:
-        'Physical school syllabus textbooks paired with gamified Math Car Racing, phonics speech, and interactive touch-screen handwriting tracing.',
-      badge: 'Early EdTech',
-      color: '#f29900',
     },
   ],
 } as const;

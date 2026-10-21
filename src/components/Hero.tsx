@@ -26,15 +26,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] xl:grid-cols-[minmax(0,1.3fr)_minmax(0,0.8fr)] gap-8 lg:gap-12 items-start mb-10">
-        <div className="lg:text-left lg:pt-6 xl:pt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] xl:grid-cols-[minmax(0,1.3fr)_minmax(0,0.8fr)] gap-8 lg:gap-12 items-center mb-10">
+        <div className="text-center">
         
         {/* PRIMARY HEADLINE (Direct, memorable, problem-oriented) */}
         <motion.h1 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="text-4xl sm:text-6xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#202124] max-w-4xl mx-auto lg:mx-0 mb-5 leading-[1.08]"
+          className="text-4xl sm:text-6xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#202124] max-w-4xl mx-auto mb-5 leading-[1.08]"
         >
           {HERO_CONTENT.primaryHeadline}
         </motion.h1>
@@ -44,13 +44,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="text-base sm:text-xl lg:text-lg xl:text-xl text-[#5f6368] max-w-3xl mx-auto lg:mx-0 leading-relaxed mb-8 font-normal"
+          className="text-base sm:text-xl lg:text-lg xl:text-xl text-[#5f6368] max-w-3xl mx-auto leading-relaxed mb-8 font-normal"
         >
           {HERO_CONTENT.supportingCopy}
         </motion.p>
 
         {/* ACTION CTAs (Low-risk, action-oriented) */}
-        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-3">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-3">
           <button
             onClick={onOpenBooking}
             className="w-full sm:w-auto h-12 px-7 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] transition-all shadow-xs hover:shadow inline-flex items-center justify-center gap-2 cursor-pointer active:scale-98"
@@ -71,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
         </div>
 
         {/* Low-Risk Microcopy Directly Under CTAs */}
-        <div className="flex items-center justify-center lg:justify-start text-xs text-[#5f6368] font-medium">
+        <div className="flex items-center justify-center text-xs text-[#5f6368] font-medium">
           <span className="flex items-center gap-1.5 text-[#202124]">
             <Check className="w-3.5 h-3.5 text-[#1e8e3e]" />
             Free 15-minute walkthrough · No pressure
@@ -94,11 +94,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onNavigateToSimulator
         >
           <div className="p-3 bg-white rounded-xl border border-[#dadce0]/60 flex items-center justify-center gap-2.5 text-xs text-[#202124] font-medium shadow-2xs">
             <Building2 className="w-4 h-4 text-[#1a73e8] shrink-0" />
-            <span><strong>20+ schools</strong> already use MSchool</span>
+            <span><strong>Partner schools</strong> use MSchool every day</span>
           </div>
           <div className="p-3 bg-white rounded-xl border border-[#dadce0]/60 flex items-center justify-center gap-2.5 text-xs text-[#202124] font-medium shadow-2xs">
             <ShieldCheck className="w-4 h-4 text-[#1e8e3e] shrink-0" />
-            <span>Built inside real family-run schools</span>
+            <span>Built by school owners since 2000</span>
           </div>
           <div className="p-3 bg-white rounded-xl border border-[#dadce0]/60 flex items-center justify-center gap-2.5 text-xs text-[#202124] font-medium shadow-2xs">
             <WifiOff className="w-4 h-4 text-[#f29900] shrink-0" />

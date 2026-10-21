@@ -1,131 +1,126 @@
 import React from 'react';
-import { 
-  GraduationCap, 
-  Phone, 
-  Mail, 
-  MessageSquare,
-  ChevronRight,
-  ShieldCheck 
-} from 'lucide-react';
-import { CTA_TEXTS, BRAND_CONFIG } from '../constants';
+import { Facebook, Instagram } from 'lucide-react';
+import { CTA_TEXTS, BRAND_CONFIG, PORTAL_URL, SOCIAL_LINKS } from '../constants';
+import logo from '../assets/brand/logo.png';
+import logoEmboss from '../assets/brand/logo-emboss.png';
 
 interface FooterProps {
-  onOpenBooking: () => void;
-  onNavigateToSimulator: (tab?: 'mschool' | 'mkids' | 'thermal') => void;
+  onOpenBooking?: () => void;
+  onNavigateToSimulator?: (tab?: 'mschool' | 'mkids' | 'thermal') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigateToSimulator }) => {
+const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
+const SocialButton: React.FC<{ href: string; label: string; children: React.ReactNode }> = ({ href, label, children }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={label}
+    title={label}
+    className="w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white inline-flex items-center justify-center transition-all hover:-translate-y-0.5"
+  >
+    {children}
+  </a>
+);
+
+const COLUMN_HEADING = 'text-sm text-white/45 mb-4';
+const LINK = 'text-base text-white hover:text-[#8ab4f8] transition-colors';
+
+export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
   return (
-    <footer className="bg-[#f8f9fa] text-[#5f6368] border-t border-[#dadce0] text-xs">
-      
-      {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          
-          {/* Brand & Direct Contact */}
-          <div className="space-y-3 md:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#e8f0fe] text-[#1a73e8] flex items-center justify-center font-bold">
-                <GraduationCap className="w-5 h-5" />
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-base font-bold text-[#202124] tracking-tight">{BRAND_CONFIG.name}</span>
-                <span className="text-[10px] uppercase font-semibold text-[#1a73e8] px-2 py-0.5 rounded-full bg-[#e8f0fe]">
-                  {BRAND_CONFIG.badge}
-                </span>
-              </div>
-            </div>
-
-            <p className="text-xs text-[#5f6368] leading-relaxed max-w-sm">
-              School management software engineered for the operational realities of Pakistani schools. Trusted by {BRAND_CONFIG.trustClaim}.
+    <footer className="bg-[#1b1c1f] text-white overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16">
+        <div className="flex flex-col lg:flex-row lg:justify-between gap-12">
+          {/* Brand */}
+          <div className="max-w-xs">
+            <img src={logo} alt="MSchool Pakistan" draggable={false} className="h-20 sm:h-24 w-auto" />
+            <p className="mt-6 text-lg leading-snug text-white/50">
+              We turn everyday school work into one simple system, built by school owners who run schools themselves.
             </p>
-
-            <div className="text-[11px] text-[#5f6368] space-y-2 pt-1">
-              <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#1a73e8] shrink-0" />
-                <span>Direct Support: <a href="tel:03358009786" className="text-[#202124] font-medium hover:underline">{BRAND_CONFIG.supportPhoneDisplay}</a></span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MessageSquare className="w-3.5 h-3.5 text-[#137333] shrink-0" />
-                <a href={BRAND_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-[#137333] font-medium hover:underline">
-                  Chat with us on WhatsApp
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#1a73e8] shrink-0" />
-                <span>{BRAND_CONFIG.supportEmail}</span>
-              </div>
-            </div>
           </div>
 
-          {/* Quick Navigation */}
-          <div className="space-y-2.5">
-            <div className="font-bold text-[#202124] uppercase text-[11px] tracking-wider">
-              Quick Navigation
+          {/* Link columns */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-10 gap-y-10 lg:gap-x-12">
+            <div>
+              <div className={COLUMN_HEADING}>Menu</div>
+              <ul className="space-y-3">
+                <li><a href="#overview" className={LINK}>Home</a></li>
+                <li><a href="#principal-story" className={LINK}>Real stories</a></li>
+                <li><a href="#case-study" className={LINK}>Our story</a></li>
+                <li><a href="#faq" className={LINK}>FAQ</a></li>
+              </ul>
             </div>
-            <ul className="space-y-2 text-xs text-[#5f6368]">
-              <li>
-                <a href="#overview" className="hover:text-[#1a73e8] transition-colors">
-                  Overview
-                </a>
-              </li>
-              <li>
-                <a href="#problems" className="hover:text-[#1a73e8] transition-colors">
-                  Problems We Solve
-                </a>
-              </li>
-              <li>
-                <a href="#interactive-demo" className="hover:text-[#1a73e8] transition-colors">
-                  Interactive Demo
-                </a>
-              </li>
-              <li>
-                <a href="#outcomes" className="hover:text-[#1a73e8] transition-colors">
-                  Outcomes & Capabilities
-                </a>
-              </li>
-              <li>
-                <a href="#proof" className="hover:text-[#1a73e8] transition-colors">
-                  Real Product Screens
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#1a73e8] transition-colors">
-                  Frequently Asked Questions
-                </a>
-              </li>
-            </ul>
-          </div>
 
-          {/* Call to Action */}
-          <div className="space-y-3">
-            <div className="font-bold text-[#202124] uppercase text-[11px] tracking-wider">
-              Get Started
+            <div>
+              <div className={COLUMN_HEADING}>Contact</div>
+              <ul className="space-y-3">
+                <li><a href={`tel:${BRAND_CONFIG.supportPhoneTel}`} className={LINK}>{BRAND_CONFIG.supportPhoneDisplay}</a></li>
+                <li>
+                  <a href={BRAND_CONFIG.whatsappUrl} target="_blank" rel="noopener noreferrer" className={LINK}>
+                    WhatsApp
+                  </a>
+                </li>
+              </ul>
             </div>
-            <p className="text-xs text-[#5f6368] leading-relaxed">
-              Book a free walkthrough for your principal, accountant, or school owner.
-            </p>
-            <button
-              onClick={onOpenBooking}
-              className="w-full h-10 rounded-full bg-[#1a73e8] hover:bg-[#1557b0] text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
-            >
-              <span>{CTA_TEXTS.BOOK_DEMO}</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
 
+            {Object.values(SOCIAL_LINKS).some(Boolean) && (
+              <div>
+                <div className={COLUMN_HEADING}>Social</div>
+                <div className="flex flex-wrap gap-2.5">
+                  {SOCIAL_LINKS.facebook && (
+                    <SocialButton href={SOCIAL_LINKS.facebook} label="MSchool on Facebook">
+                      <Facebook className="w-5 h-5" />
+                    </SocialButton>
+                  )}
+                  {SOCIAL_LINKS.instagram && (
+                    <SocialButton href={SOCIAL_LINKS.instagram} label="MSchool on Instagram">
+                      <Instagram className="w-5 h-5" />
+                    </SocialButton>
+                  )}
+                  {SOCIAL_LINKS.tiktok && (
+                    <SocialButton href={SOCIAL_LINKS.tiktok} label="MSchool on TikTok">
+                      <TikTokIcon className="w-5 h-5" />
+                    </SocialButton>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <div>
+              <div className={COLUMN_HEADING}>Account</div>
+              <ul className="space-y-3">
+                <li><a href={PORTAL_URL} className={LINK}>Login</a></li>
+                {onOpenBooking && (
+                  <li>
+                    <button onClick={onOpenBooking} className={`${LINK} cursor-pointer text-left`}>
+                      {CTA_TEXTS.BOOK_FREE_DEMO}
+                    </button>
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-[#dadce0] flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#5f6368]">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#1e8e3e]" />
-            <span>Built inside family-run schools • Active across 20+ Pakistani institutions</span>
-          </div>
+        {/* The real logo, large and embossed into the footer (tonal, brand-tinted) */}
+        <img
+          src={logoEmboss}
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="mx-auto mt-14 sm:mt-16 w-full max-w-[560px] select-none pointer-events-none"
+          style={{ filter: 'drop-shadow(0 -1px 0 rgba(255,255,255,0.09)) drop-shadow(0 4px 4px rgba(0,0,0,0.8))' }}
+        />
 
-          <div>
-            © {new Date().getFullYear()} MSchool Ecosystem. All rights reserved.
-          </div>
+        {/* Bottom bar */}
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-white/45">
+          <span>{new Date().getFullYear()} © MSchool Pakistan</span>
+          <span>Built by school owners since 2000</span>
         </div>
       </div>
     </footer>

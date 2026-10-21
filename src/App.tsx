@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { SchoolsMarquee } from './components/SchoolsMarquee';
+import { ProductsEcosystem } from './components/ProductsEcosystem';
+import { PrincipalStory } from './components/PrincipalStory';
+import { ResultCardsStory } from './components/ResultCardsStory';
 import { ProblemSection } from './components/ProblemSection';
 import { BeforeAfterSection } from './components/BeforeAfterSection';
-import { OutcomeSolutions } from './components/OutcomeSolutions';
 import { ProductScreenshotsProof } from './components/ProductScreenshotsProof';
-import { PakistanContextSection } from './components/PakistanContextSection';
 import { PartnersAndStory } from './components/PartnersAndStory';
-import { WhyChooseSection } from './components/WhyChooseSection';
 import { EcosystemSection } from './components/EcosystemSection';
 import { StrategicDemoCallout } from './components/StrategicDemoCallout';
 import { FAQSection } from './components/FAQSection';
-import { FinalDemoSection } from './components/FinalDemoSection';
 import { BookingModal } from './components/BookingModal';
 import { Footer } from './components/Footer';
 import { 
@@ -81,6 +81,14 @@ export default function App() {
           simulatorInitialTab={simulatorInitialTab}
         />
 
+        <SchoolsMarquee />
+
+        <ProductsEcosystem onOpenBooking={() => setBookingModalOpen(true)} />
+
+        <PrincipalStory onOpenBooking={() => setBookingModalOpen(true)} />
+
+        <ResultCardsStory onOpenBooking={() => setBookingModalOpen(true)} />
+
         {/* Step 4: Problem Recognition */}
         <ProblemSection 
           onOpenBooking={() => setBookingModalOpen(true)}
@@ -91,30 +99,14 @@ export default function App() {
           onOpenBooking={() => setBookingModalOpen(true)}
         />
 
-        {/* Step 6: Outcome-Based Product Solutions */}
-        <OutcomeSolutions 
-          onOpenBooking={() => setBookingModalOpen(true)}
-          onNavigateToSimulator={handleNavigateToSimulator}
-        />
-
         {/* Step 7: Real Product Screens as Proof */}
         <ProductScreenshotsProof 
           onOpenBooking={() => setBookingModalOpen(true)}
           onNavigateToSimulator={handleNavigateToSimulator}
         />
 
-        {/* Step 8: Built for Real Pakistani Schools */}
-        <PakistanContextSection 
-          onOpenBooking={() => setBookingModalOpen(true)}
-        />
-
-        {/* Step 9: Trust / Origin Story (20+ Partner Schools) */}
+        {/* Step 9: Our story (school owners first) */}
         <PartnersAndStory />
-
-        {/* Step 10: Why Schools Choose MSchool (Benefits) */}
-        <WhyChooseSection 
-          onOpenBooking={() => setBookingModalOpen(true)}
-        />
 
         {/* Step 11: The Bigger Connected Ecosystem */}
         <EcosystemSection 
@@ -131,9 +123,6 @@ export default function App() {
         <FAQSection 
           onOpenBooking={() => setBookingModalOpen(true)}
         />
-
-        {/* Step 14: Final High-Converting Demo Form */}
-        <FinalDemoSection />
       </main>
 
       {/* Footer */}

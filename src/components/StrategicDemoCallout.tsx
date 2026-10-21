@@ -13,7 +13,7 @@ export const StrategicDemoCallout: React.FC<StrategicDemoCalloutProps> = ({ onOp
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         
-        <span className="text-xs font-bold uppercase tracking-wider text-[#d2e3fc] mb-2 block">
+        <span className="text-xs font-bold uppercase tracking-wider text-white mb-2 block">
           Practical Live Walkthrough
         </span>
 
@@ -21,7 +21,7 @@ export const StrategicDemoCallout: React.FC<StrategicDemoCalloutProps> = ({ onOp
           See MSchool running a real school.
         </h2>
 
-        <p className="text-sm sm:text-base text-[#e8f0fe] max-w-2xl mx-auto leading-relaxed mb-8">
+        <p className="text-sm sm:text-base text-white max-w-2xl mx-auto leading-relaxed mb-8">
           Bring your principal, accountant or administrator. We’ll show you how MSchool fits into your school’s daily operations without any setup hassle.
         </p>
 
@@ -45,7 +45,7 @@ export const StrategicDemoCallout: React.FC<StrategicDemoCalloutProps> = ({ onOp
           </a>
         </div>
 
-        <p className="text-xs text-[#d2e3fc] mt-4 font-normal">
+        <p className="text-xs text-white mt-4 font-normal">
           Direct local support from Karachi • Phone & WhatsApp: {BRAND_CONFIG.supportPhoneDisplay} • Zero sales pressure
         </p>
 
