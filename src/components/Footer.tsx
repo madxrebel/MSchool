@@ -7,6 +7,8 @@ import logoEmboss from '../assets/brand/logo-emboss.png';
 interface FooterProps {
   onOpenBooking?: () => void;
   onNavigateToSimulator?: (tab?: 'mschool' | 'mkids' | 'thermal') => void;
+  /** Set to '/' on pages other than the home page so the menu links point back to it */
+  homeBase?: string;
 }
 
 const TikTokIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -31,7 +33,7 @@ const SocialButton: React.FC<{ href: string; label: string; children: React.Reac
 const COLUMN_HEADING = 'text-sm text-white/45 mb-4';
 const LINK = 'text-base text-white hover:text-[#8ab4f8] transition-colors';
 
-export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenBooking, homeBase = '' }) => {
   return (
     <footer className="bg-[#1b1c1f] text-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-16">
@@ -49,10 +51,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             <div>
               <div className={COLUMN_HEADING}>Menu</div>
               <ul className="space-y-3">
-                <li><a href="#overview" className={LINK}>Home</a></li>
-                <li><a href="#principal-story" className={LINK}>Real stories</a></li>
-                <li><a href="#case-study" className={LINK}>Our story</a></li>
-                <li><a href="#faq" className={LINK}>FAQ</a></li>
+                <li><a href={`${homeBase}#overview`} className={LINK}>Home</a></li>
+                <li><a href={`${homeBase}#principal-story`} className={LINK}>Real stories</a></li>
+                <li><a href={`${homeBase}#case-study`} className={LINK}>Our story</a></li>
+                <li><a href={`${homeBase}#faq`} className={LINK}>FAQ</a></li>
               </ul>
             </div>
 

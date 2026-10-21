@@ -216,6 +216,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ product: p, index:
             Get it on Google Play
           </a>
         )}
+        {p.id === 'mkids' && (
+          <a
+            href="/mkids"
+            className="h-11 px-5 rounded-full text-sm font-semibold text-white bg-[#1a73e8] hover:bg-[#1557b0] transition-colors inline-flex items-center gap-2"
+          >
+            Order MKids
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        )}
         <button
           onClick={onOpenBooking}
           className="h-11 px-5 rounded-full text-sm font-semibold border border-[#dadce0] hover:border-[#bdc1c6] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
